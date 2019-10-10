@@ -62,7 +62,7 @@ class Position {
 
         let bScrollInner = new BScroll.default($('.home-box').get(0),{
             probeType:2,
-            scrollbar : true
+            scrollbar : true,
         })
         bScrollInner.scrollBy(0,-40);
         //初始化滚动区域的位置
