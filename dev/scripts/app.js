@@ -137,10 +137,35 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 /*!****************************!*\
   !*** ./src/scripts/app.js ***!
   \****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__(/*! ./controllers/ */ \"./src/scripts/controllers/index.js\")\r\n__webpack_require__(/*! ./controllers/positions */ \"./src/scripts/controllers/positions.js\")\r\n\n\n//# sourceURL=webpack:///./src/scripts/app.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _router___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./router/ */ \"./src/scripts/router/index.js\");\n\r\n\n\n//# sourceURL=webpack:///./src/scripts/app.js?");
+
+/***/ }),
+
+/***/ "./src/scripts/controllers/cart.js":
+/*!*****************************************!*\
+  !*** ./src/scripts/controllers/cart.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _views_cart_art__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../views/cart.art */ \"./src/scripts/views/cart.art\");\n/* harmony import */ var _views_cart_art__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_views_cart_art__WEBPACK_IMPORTED_MODULE_0__);\n\r\n\r\nclass Cart{\r\n    render(){\r\n        let cartViewHtml = _views_cart_art__WEBPACK_IMPORTED_MODULE_0___default()();\r\n        $(\"main\").html(cartViewHtml);\r\n    }\r\n}\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (new Cart());\n\n//# sourceURL=webpack:///./src/scripts/controllers/cart.js?");
+
+/***/ }),
+
+/***/ "./src/scripts/controllers/categroy.js":
+/*!*********************************************!*\
+  !*** ./src/scripts/controllers/categroy.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _views_categroy_art__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../views/categroy.art */ \"./src/scripts/views/categroy.art\");\n/* harmony import */ var _views_categroy_art__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_views_categroy_art__WEBPACK_IMPORTED_MODULE_0__);\n\r\n\r\nclass Categroy{\r\n    render(){\r\n        let categroyViewHtml = _views_categroy_art__WEBPACK_IMPORTED_MODULE_0___default()();\r\n        $(\"main\").html(categroyViewHtml);\r\n    }\r\n}\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (new Categroy());\n\n//# sourceURL=webpack:///./src/scripts/controllers/categroy.js?");
 
 /***/ }),
 
@@ -148,10 +173,11 @@ eval("__webpack_require__(/*! ./controllers/ */ \"./src/scripts/controllers/inde
 /*!******************************************!*\
   !*** ./src/scripts/controllers/index.js ***!
   \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("const layoutView = __webpack_require__(/*! ../views/layout.art */ \"./src/scripts/views/layout.art\");\r\n\r\nclass Index {\r\n    constructor() {\r\n        this.render();\r\n    }\r\n    render() {\r\n        const html = layoutView({});\r\n        $('#root').html(html);\r\n    }\r\n}\r\n\r\nnew Index();\r\n\r\n\n\n//# sourceURL=webpack:///./src/scripts/controllers/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nconst layoutView = __webpack_require__(/*! ../views/layout.art */ \"./src/scripts/views/layout.art\");\r\n\r\nclass Index {\r\n    render() {\r\n        const html = layoutView({});\r\n        $('#root').html(html);\r\n        $('footer li').on('click',this.bindClick)\r\n    }\r\n    bindClick(){\r\n        location.hash = $(this).data('to');\r\n    }\r\n}\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (new Index());\r\n\r\n\n\n//# sourceURL=webpack:///./src/scripts/controllers/index.js?");
 
 /***/ }),
 
@@ -159,10 +185,23 @@ eval("const layoutView = __webpack_require__(/*! ../views/layout.art */ \"./src/
 /*!**********************************************!*\
   !*** ./src/scripts/controllers/positions.js ***!
   \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("const positionView = __webpack_require__(/*! ../views/position.art */ \"./src/scripts/views/position.art\");\r\nconst positionListView = __webpack_require__(/*! ../views/position-list.art */ \"./src/scripts/views/position-list.art\");\r\nconst positionSwiperView = __webpack_require__(/*! ../views/position-swiper.art */ \"./src/scripts/views/position-swiper.art\");\r\nconst PositionModel = __webpack_require__(/*! ../models/position */ \"./src/scripts/models/position.js\");\r\nconst BScroll = __webpack_require__(/*! better-scroll */ \"./node_modules/better-scroll/dist/bscroll.esm.js\");\r\nclass Position {\r\n    constructor() {\r\n        this.render();\r\n        this.list = [];\r\n        this.pageNo = 1;\r\n        this.pageTotal = 0;\r\n        this.fixdEle = null;\r\n    }\r\n    renderer(result) {\r\n        this.list = [...this.list, ...result.data.skuInfo];\r\n        let positionListHtml = positionListView({\r\n            list: this.list\r\n        })\r\n        $('.product-list-wrap').html(positionListHtml);\r\n    }\r\n    async render() {\r\n\r\n        let that = this;\r\n        //加载主体\r\n        let $main = $('main');\r\n\r\n        let positionViewHtml = positionView({});\r\n        $main.html(positionViewHtml);\r\n        let $search = $('.search-bar-wrap');\r\n        let $search_size = {\r\n            top: $search.offset().top\r\n        }\r\n        //加载swiper的数据\r\n        let homeRes = await PositionModel.getHome();\r\n        let positionSwiperViewHtml = positionSwiperView({\r\n            banner: homeRes.data[0].list\r\n        });\r\n        $('.swiper-wrapper').html(positionSwiperViewHtml);\r\n        //获取第一页数据\r\n        let result = await PositionModel.get({\r\n            pageNo: 1\r\n        });\r\n        this.pageTotal = result.data.pageTotal;\r\n        this.renderer(result);\r\n\r\n        //当数据都加载完毕后加载轮播\r\n        let swiper = new Swiper('.swiper-container', {\r\n            pagination: {\r\n                el: '.swiper-pagination',\r\n                bulletClass: 'my-bullet',\r\n                bulletActiveClass: 'my-bullet-active'\r\n            },\r\n            loop: true,\r\n            autoplay: true,\r\n        });\r\n        //滚动设置\r\n        let $foot_img = $('.foot img');\r\n\r\n        //初始化滚动区域\r\n        let bScroll = new BScroll.default($main.get(0), {\r\n            probeType: 2,\r\n            bounce: false,\r\n            scrollbar: true\r\n        });\r\n        //初始化滚动区域的位置\r\n        // bScroll.scrollBy(0 ,-40,500);\r\n        bScroll.on('scrollEnd', async function () {\r\n            if (this.y <= this.maxScrollY && that.pageNo < that.pageTotal) {\r\n                that.pageNo++;\r\n                $foot_img.attr('src', '/assets/images/ajax-loader.gif')\r\n                // $foot_img.siblings('b').html(\"释放以刷新\");\r\n                let result = await PositionModel.get({\r\n                    pageNo: that.pageNo\r\n                });\r\n                that.renderer(result);\r\n                bScroll.scrollBy(0, 40, 500);\r\n                $foot_img.attr('src', '/assets/images/arrow.png');\r\n                $foot_img.removeClass('down');\r\n            } else if (that.pageNo >= that.pageTotal) {\r\n                $foot_img.css({\r\n                    display: 'none'\r\n                });\r\n                $foot_img.siblings('b').html(\"没有更多了\");\r\n            }\r\n        })\r\n        bScroll.on('scroll', function () {\r\n            if (this.maxScrollY > this.y) {\r\n                $foot_img.addClass('down');\r\n            }\r\n            if (this.y <= - $search_size.top) {\r\n                console.log(that.fixdEle);\r\n                if (!that.fixdEle) {\r\n                    that.fixdEle = $search.clone();\r\n                    that.fixdEle.addClass('shadow').insertBefore('.index-container');\r\n                }\r\n            } else {\r\n                if (that.fixdEle != null) {\r\n                    that.fixdEle.remove();\r\n                    that.fixdEle = null;\r\n                }\r\n            }\r\n        })\r\n    }\r\n}\r\nnew Position();\n\n//# sourceURL=webpack:///./src/scripts/controllers/positions.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nconst positionView = __webpack_require__(/*! ../views/position.art */ \"./src/scripts/views/position.art\");\r\nconst positionListView = __webpack_require__(/*! ../views/position-list.art */ \"./src/scripts/views/position-list.art\");\r\nconst positionSwiperView = __webpack_require__(/*! ../views/position-swiper.art */ \"./src/scripts/views/position-swiper.art\");\r\nconst PositionModel = __webpack_require__(/*! ../models/position */ \"./src/scripts/models/position.js\");\r\nconst BScroll = __webpack_require__(/*! better-scroll */ \"./node_modules/better-scroll/dist/bscroll.esm.js\");\r\nclass Position {\r\n    constructor() {\r\n        this.list = [];\r\n        this.pageNo = 1;\r\n        this.pageTotal = 0;\r\n        this.fixdEle = null;\r\n    }\r\n    renderer(result) {\r\n        this.list = [...this.list, ...result.data.skuInfo];\r\n        let positionListHtml = positionListView({\r\n            list: this.list\r\n        })\r\n        $('.product-list-wrap').html(positionListHtml);\r\n    }\r\n    async render() {\r\n\r\n        let that = this;\r\n        //加载主体\r\n        let $main = $('main');\r\n\r\n        let positionViewHtml = positionView({});\r\n        $main.html(positionViewHtml);\r\n        let $search = $('.search-bar-wrap');\r\n        let $search_size = {\r\n            top: $search.offset().top\r\n        }\r\n        let $back = $('.back-to-top');\r\n        //加载swiper的数据\r\n        let homeRes = await PositionModel.getHome();\r\n        let positionSwiperViewHtml = positionSwiperView({\r\n            banner: homeRes.data[0].list\r\n        });\r\n        $('.swiper-wrapper').html(positionSwiperViewHtml);\r\n        //获取第一页数据\r\n        let result = await PositionModel.get({\r\n            pageNo: 1\r\n        });\r\n        this.pageTotal = result.data.pageTotal;\r\n        this.renderer(result);\r\n\r\n        //当数据都加载完毕后加载轮播\r\n        let swiper = new Swiper('.swiper-container', {\r\n            pagination: {\r\n                el: '.swiper-pagination',\r\n                bulletClass: 'my-bullet',\r\n                bulletActiveClass: 'my-bullet-active'\r\n            },\r\n            loop: true,\r\n            autoplay: true,\r\n        });\r\n        //滚动设置\r\n        let $foot_img = $('.foot img');\r\n\r\n        //初始化滚动区域\r\n        let bScroll = new BScroll.default($main.get(0), {\r\n            probeType: 3,\r\n            bounce: false,\r\n            scrollbar: true\r\n        });\r\n        //初始化滚动区域的位置\r\n        // bScroll.scrollBy(0 ,-40,500);\r\n        bScroll.on('scrollEnd', async function () {\r\n            if (this.y <= this.maxScrollY && that.pageNo < that.pageTotal) {\r\n                that.pageNo++;\r\n                $foot_img.attr('src', '/assets/images/ajax-loader.gif')\r\n                // $foot_img.siblings('b').html(\"释放以刷新\");\r\n                let result = await PositionModel.get({\r\n                    pageNo: that.pageNo\r\n                });\r\n                that.renderer(result);\r\n                bScroll.scrollBy(0, 40, 500);\r\n                $foot_img.attr('src', '/assets/images/arrow.png');\r\n                $foot_img.removeClass('down');\r\n            } else if (that.pageNo >= that.pageTotal) {\r\n                $foot_img.css({\r\n                    display: 'none'\r\n                });\r\n                $foot_img.siblings('b').html(\"没有更多了\");\r\n            }\r\n            \r\n        })\r\n        bScroll.on('scroll', function () {\r\n            if (this.maxScrollY > this.y) {\r\n                $foot_img.addClass('down');\r\n            }\r\n            if (this.y <= - $search_size.top) {\r\n                if (!that.fixdEle) {\r\n                    that.fixdEle = $search.clone();\r\n                    that.fixdEle.addClass('shadow').insertBefore('.index-container');\r\n                }\r\n            } else {\r\n                if (that.fixdEle != null) {\r\n                    that.fixdEle.remove();\r\n                    that.fixdEle = null;\r\n                }\r\n            }\r\n            if(this.y<-800){\r\n                $back.addClass('active');\r\n            }else{\r\n                $back.removeClass('active');\r\n            }\r\n        })\r\n        $back.on('click',function(){\r\n            bScroll.scrollTo(0,0,500);\r\n        })\r\n    }\r\n}\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (new Position());\n\n//# sourceURL=webpack:///./src/scripts/controllers/positions.js?");
+
+/***/ }),
+
+/***/ "./src/scripts/controllers/profile.js":
+/*!********************************************!*\
+  !*** ./src/scripts/controllers/profile.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _views_profile_art__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../views/profile.art */ \"./src/scripts/views/profile.art\");\n/* harmony import */ var _views_profile_art__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_views_profile_art__WEBPACK_IMPORTED_MODULE_0__);\n\r\n\r\nclass Profile{\r\n    render(){\r\n        let profileViewHtml = _views_profile_art__WEBPACK_IMPORTED_MODULE_0___default()();\r\n        $(\"main\").html(profileViewHtml);\r\n    }\r\n}\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (new Profile());\n\n//# sourceURL=webpack:///./src/scripts/controllers/profile.js?");
 
 /***/ }),
 
@@ -177,6 +216,40 @@ eval("module.exports = {\r\n    get({ pageNo = 1 } = {}) {\r\n        return $.a
 
 /***/ }),
 
+/***/ "./src/scripts/router/index.js":
+/*!*************************************!*\
+  !*** ./src/scripts/router/index.js ***!
+  \*************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _controllers___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../controllers/ */ \"./src/scripts/controllers/index.js\");\n/* harmony import */ var _controllers_positions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../controllers/positions */ \"./src/scripts/controllers/positions.js\");\n/* harmony import */ var _controllers_categroy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../controllers/categroy */ \"./src/scripts/controllers/categroy.js\");\n/* harmony import */ var _controllers_cart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../controllers/cart */ \"./src/scripts/controllers/cart.js\");\n/* harmony import */ var _controllers_profile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../controllers/profile */ \"./src/scripts/controllers/profile.js\");\n\r\n\r\n\r\n\r\n\r\n\r\nclass Router{\r\n    constructor(){\r\n        _controllers___WEBPACK_IMPORTED_MODULE_0__[\"default\"].render();\r\n        this.render();\r\n        this.pageControllers = {\r\n            positionController: _controllers_positions__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\r\n            categroyController: _controllers_categroy__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\r\n            cartController: _controllers_cart__WEBPACK_IMPORTED_MODULE_3__[\"default\"],\r\n            profileController: _controllers_profile__WEBPACK_IMPORTED_MODULE_4__[\"default\"]\r\n        }\r\n    }\r\n    render(){\r\n        window.addEventListener('hashchange',this.hashChangeHandler.bind(this));\r\n        window.addEventListener('load',this.loadHandler.bind(this));\r\n    }\r\n    setActiveClass(hash){\r\n        $(`footer li[data-to=${hash}]`).addClass('active').siblings().removeClass('active');\r\n    } \r\n    renderDOM(hash){\r\n        this.pageControllers[`${hash}Controller`].render();\r\n    }\r\n    loadHandler(){\r\n        let hash = location.hash.substring(1) || 'position';\r\n        location.hash = hash;\r\n        this.renderDOM(hash);\r\n        this.setActiveClass(hash);\r\n    }\r\n    hashChangeHandler(){\r\n        let hash = location.hash.substring(1);\r\n        this.renderDOM(hash);\r\n        this.setActiveClass(hash);\r\n    }\r\n   \r\n}\r\n\r\nnew Router();\n\n//# sourceURL=webpack:///./src/scripts/router/index.js?");
+
+/***/ }),
+
+/***/ "./src/scripts/views/cart.art":
+/*!************************************!*\
+  !*** ./src/scripts/views/cart.art ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var $imports = __webpack_require__(/*! ../../../node_modules/art-template/lib/runtime.js */ \"./node_modules/art-template/lib/runtime.js\");\nmodule.exports = function ($data) {\n    'use strict';\n    $data = $data || {};\n    var $$out = '';\n    $$out += '<div>购物车</div>';\n    return $$out;\n};\n\n//# sourceURL=webpack:///./src/scripts/views/cart.art?");
+
+/***/ }),
+
+/***/ "./src/scripts/views/categroy.art":
+/*!****************************************!*\
+  !*** ./src/scripts/views/categroy.art ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var $imports = __webpack_require__(/*! ../../../node_modules/art-template/lib/runtime.js */ \"./node_modules/art-template/lib/runtime.js\");\nmodule.exports = function ($data) {\n    'use strict';\n    $data = $data || {};\n    var $$out = '';\n    $$out += '<div>分类</div>';\n    return $$out;\n};\n\n//# sourceURL=webpack:///./src/scripts/views/categroy.art?");
+
+/***/ }),
+
 /***/ "./src/scripts/views/layout.art":
 /*!**************************************!*\
   !*** ./src/scripts/views/layout.art ***!
@@ -184,7 +257,7 @@ eval("module.exports = {\r\n    get({ pageNo = 1 } = {}) {\r\n        return $.a
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var $imports = __webpack_require__(/*! ../../../node_modules/art-template/lib/runtime.js */ \"./node_modules/art-template/lib/runtime.js\");\nmodule.exports = function ($data) {\n    'use strict';\n    $data = $data || {};\n    var $$out = '';\n    $$out += '<div class=\"index-container\">\\r\\n\\r\\n    <main>\\r\\n\\r\\n    </main>\\r\\n    <footer>\\r\\n        <ul class=\"ul-nav\">\\r\\n            <li class=\"active\"><span class=\"icon-home\"></span>\\r\\n                <h5>首页</h5>\\r\\n            </li>\\r\\n            <li><span class=\"icon-categroy\"></span>\\r\\n                <h5>分类</h5>\\r\\n            </li>\\r\\n            <li><span class=\"icon-cart\"></span>\\r\\n                <h5>购物车</h5>\\r\\n            </li>\\r\\n            <li><span class=\"icon-profile\"></span>\\r\\n                <h5>个人中心</h5>\\r\\n            </li>\\r\\n        </ul>\\r\\n    </footer>\\r\\n\\r\\n</div>';\n    return $$out;\n};\n\n//# sourceURL=webpack:///./src/scripts/views/layout.art?");
+eval("var $imports = __webpack_require__(/*! ../../../node_modules/art-template/lib/runtime.js */ \"./node_modules/art-template/lib/runtime.js\");\nmodule.exports = function ($data) {\n    'use strict';\n    $data = $data || {};\n    var $$out = '';\n    $$out += '<div class=\"index-container\">\\r\\n\\r\\n    <main>\\r\\n\\r\\n    </main>\\r\\n    <aside class=\"back-to-top\">\\r\\n        <span class=\"yo-ico\">&#xe600;</span>\\r\\n    </aside>\\r\\n    <footer>\\r\\n        <ul class=\"ul-nav\">\\r\\n            <li data-to=\"position\" class=\"active\"><span class=\"icon-home\"></span>\\r\\n                <h5>首页</h5>\\r\\n            </li>\\r\\n            <li data-to=\"categroy\"><span class=\"icon-categroy\"></span>\\r\\n                <h5>分类</h5>\\r\\n            </li>\\r\\n            <li data-to=\"cart\"><span class=\"icon-cart\"></span>\\r\\n                <h5>购物车</h5>\\r\\n            </li>\\r\\n            <li data-to=\"profile\"><span class=\"icon-profile\"></span>\\r\\n                <h5>个人中心</h5>\\r\\n            </li>\\r\\n        </ul>\\r\\n    </footer>\\r\\n\\r\\n</div>';\n    return $$out;\n};\n\n//# sourceURL=webpack:///./src/scripts/views/layout.art?");
 
 /***/ }),
 
@@ -218,6 +291,17 @@ eval("var $imports = __webpack_require__(/*! ../../../node_modules/art-template/
 /***/ (function(module, exports, __webpack_require__) {
 
 eval("var $imports = __webpack_require__(/*! ../../../node_modules/art-template/lib/runtime.js */ \"./node_modules/art-template/lib/runtime.js\");\nmodule.exports = function ($data) {\n    'use strict';\n    $data = $data || {};\n    var $$out = '';\n    $$out += '<div class=\"scroll-container\">\\r\\n    <header>\\r\\n        <span class=\"yo-ico\">&#xe82e;</span>\\r\\n    </header>\\r\\n    <section class=\"search-bar-wrap\">\\r\\n        <h2 class=\"search-bar\">\\r\\n            <aside class=\"search-icon\">\\r\\n                <span class=\"yo-ico\">&#xe741;</span>\\r\\n            </aside>\\r\\n            <aside class=\"search-val\">T恤</aside>\\r\\n        </h2>\\r\\n    </section>\\r\\n\\r\\n    <div class=\"swiper-container\">\\r\\n        <div class=\"swiper-wrapper\">\\r\\n        </div>\\r\\n        <div class=\"swiper-pagination\"></div>\\r\\n    </div>\\r\\n\\r\\n    <section class=\"home-box\">\\r\\n        <article class=\"headerline-wrap\">\\r\\n            <h3>猜你喜欢</h3>\\r\\n        </article>\\r\\n        <aside class=\"product-list-container\">\\r\\n            <ul class=\"product-list-wrap\">\\r\\n            </ul>\\r\\n        </aside>\\r\\n    </section>\\r\\n    <div class=\"foot\">\\r\\n        <img ';\n    $$out += 'src=\"/assets/images/arrow.png\"';\n    $$out += ' />\\r\\n        <b>上拉加载更多...</b>\\r\\n    </div>\\r\\n</div>';\n    return $$out;\n};\n\n//# sourceURL=webpack:///./src/scripts/views/position.art?");
+
+/***/ }),
+
+/***/ "./src/scripts/views/profile.art":
+/*!***************************************!*\
+  !*** ./src/scripts/views/profile.art ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var $imports = __webpack_require__(/*! ../../../node_modules/art-template/lib/runtime.js */ \"./node_modules/art-template/lib/runtime.js\");\nmodule.exports = function ($data) {\n    'use strict';\n    $data = $data || {};\n    var $$out = '';\n    $$out += '<div>个人信息</div>';\n    return $$out;\n};\n\n//# sourceURL=webpack:///./src/scripts/views/profile.art?");
 
 /***/ })
 

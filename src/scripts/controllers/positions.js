@@ -5,7 +5,6 @@ const PositionModel = require('../models/position');
 const BScroll = require('better-scroll');
 class Position {
     constructor() {
-        this.render();
         this.list = [];
         this.pageNo = 1;
         this.pageTotal = 0;
@@ -30,6 +29,7 @@ class Position {
         let $search_size = {
             top: $search.offset().top
         }
+        let $back = $('.back-to-top');
         //加载swiper的数据
         let homeRes = await PositionModel.getHome();
         let positionSwiperViewHtml = positionSwiperView({
@@ -58,7 +58,7 @@ class Position {
 
         //初始化滚动区域
         let bScroll = new BScroll.default($main.get(0), {
-            probeType: 2,
+            probeType: 3,
             bounce: false,
             scrollbar: true
         });
@@ -82,13 +82,13 @@ class Position {
                 });
                 $foot_img.siblings('b').html("没有更多了");
             }
+            
         })
         bScroll.on('scroll', function () {
             if (this.maxScrollY > this.y) {
                 $foot_img.addClass('down');
             }
             if (this.y <= - $search_size.top) {
-                console.log(that.fixdEle);
                 if (!that.fixdEle) {
                     that.fixdEle = $search.clone();
                     that.fixdEle.addClass('shadow').insertBefore('.index-container');
@@ -99,7 +99,15 @@ class Position {
                     that.fixdEle = null;
                 }
             }
+            if(this.y<-800){
+                $back.addClass('active');
+            }else{
+                $back.removeClass('active');
+            }
+        })
+        $back.on('click',function(){
+            bScroll.scrollTo(0,0,500);
         })
     }
 }
-new Position();
+export default new Position();

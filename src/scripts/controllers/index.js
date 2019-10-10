@@ -1,14 +1,15 @@
 const layoutView = require('../views/layout.art');
 
 class Index {
-    constructor() {
-        this.render();
-    }
     render() {
         const html = layoutView({});
         $('#root').html(html);
+        $('footer li').on('click',this.bindClick)
+    }
+    bindClick(){
+        location.hash = $(this).data('to');
     }
 }
 
-new Index();
+export default new Index();
 

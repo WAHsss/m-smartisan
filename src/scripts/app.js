@@ -1,2 +1,1 @@
-require('./controllers/')
-require('./controllers/positions')
+import './router/'

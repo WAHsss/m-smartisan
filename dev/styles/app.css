@@ -1005,3 +1005,33 @@ a {
         .product-list-container .product-list-wrap .product-list-item .product-price .money-num {
           font-size: .14rem;
           line-height: .14rem; }
+
+.back-to-top {
+  width: .35rem;
+  height: .4rem;
+  position: fixed;
+  right: .14rem;
+  bottom: 0;
+  opacity: 0;
+  background: #fff;
+  box-shadow: 0 0.03rem 0.12rem rgba(0, 0, 0, 0.06);
+  border-radius: .07rem;
+  transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  z-index: 99; }
+  .back-to-top span {
+    font-size: .22rem;
+    color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .back-to-top::after {
+    content: "";
+    position: absolute;
+    top: -0.24rem;
+    left: -0.24rem;
+    right: -0.24rem;
+    bottom: -0.24rem; }
+  .back-to-top.active {
+    bottom: .8rem;
+    opacity: 1; }

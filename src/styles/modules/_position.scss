@@ -164,3 +164,37 @@
 
     }
 }
+
+.back-to-top{
+    width: .35rem;
+    height: .4rem;
+    position: fixed;
+    right: .14rem;
+    bottom: 0;
+    opacity: 0;
+    background: #fff;
+    box-shadow: 0 0.03rem 0.12rem rgba(0,0,0,.06);
+    border-radius: .07rem;
+    transition: all .5s cubic-bezier(.215,.61,.355,1);
+    z-index: 99;
+    span{
+        font-size: .22rem;
+        color: rgba(0,0,0,.4);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    &::after{
+        content: "";
+        position: absolute;
+        top: -0.24rem;
+        left: -0.24rem;
+        right: -0.24rem;
+        bottom: -0.24rem;
+    }
+    &.active{
+        bottom: .8rem;
+        opacity: 1;
+    }
+}
