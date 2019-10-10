@@ -1,0 +1,40 @@
+<div class="scroll-container">
+    <header>
+        <span class="yo-ico">&#xe82e;</span>
+    </header>
+    <section class="search-bar-wrap">
+        <h2 class="search-bar">
+            <aside class="search-icon">
+                <span class="yo-ico">&#xe741;</span>
+            </aside>
+            <aside class="search-val">T恤</aside>
+        </h2>
+    </section>
+
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <article class="headerline-wrap">
+        <h3>猜你喜欢</h3>
+    </article>
+    <section class="home-box">
+        <div class="home-box-container">
+            <div class="head">
+                <img src="/assets/images/arrow.png" />
+                <b>下拉刷新...</b>
+            </div>
+
+            <aside class="product-list-container">
+                <ul class="product-list-wrap">
+                </ul>
+            </aside>
+            <div class="foot">
+                <img src="/assets/images/arrow.png" />
+                <b>上拉加载更多...</b>
+            </div>
+        </div>
+    </section>
+
+</div>

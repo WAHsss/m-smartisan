@@ -1,0 +1,15 @@
+{{each list}}
+<li class="product-list-item">
+    <figure class="product-img-cover">
+        <img src={{$value.images}}
+            alt="">
+    </figure>
+    <article class="product-tit">
+        <h3>{{$value.skuMobileTitle}}</h3>
+    </article>
+    <article class="product-price">
+        <span class="money-categroy">￥</span>
+        <span class="price-num">{{$value.originalPrice}}</span>
+    </article>
+</li>
+{{/each}}

@@ -1,0 +1,6 @@
+{{each banner}}
+<div class="swiper-slide">
+    <img src={{$value.image}}
+        alt="">
+</div>
+{{/each}}
