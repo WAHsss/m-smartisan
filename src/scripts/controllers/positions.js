@@ -2,16 +2,18 @@ const positionView = require('../views/position.art');
 const positionListView = require('../views/position-list.art');
 const positionSwiperView = require('../views/position-swiper.art');
 const PositionModel = require('../models/position');
+const searchBarView = require('../views/search-bar.art');
 const BScroll = require('better-scroll');
 class Position {
     constructor() {
-        this.render();
         this.list = [];
         this.pageNo = 1;
         this.pageTotal = 0;
+        this.fixdEle = null;
+        this.ifLoadSearch = false;
     }
-    async renderer(result){
-        this.list = [...this.list,...result.data.skuInfo];
+    renderer(result) {
+        this.list = [...this.list, ...result.data.skuInfo];
         let positionListHtml = positionListView({
             list: this.list
         })
@@ -23,11 +25,14 @@ class Position {
         //加载主体
         let $main = $('main');
 
-        
         let positionViewHtml = positionView({});
         $main.html(positionViewHtml);
-
-        //加载swiper
+        let $search = $('.search-bar-wrap');
+        let $search_size = {
+            top: $search.offset().top
+        }
+        let $back = $('.back-to-top');
+        //加载swiper的数据
         let homeRes = await PositionModel.getHome();
         let positionSwiperViewHtml = positionSwiperView({
             banner: homeRes.data[0].list
@@ -35,11 +40,14 @@ class Position {
         $('.swiper-wrapper').html(positionSwiperViewHtml);
         //获取第一页数据
         let result = await PositionModel.get({
-            pageNo : 1
+            pageNo: 1
         });
         this.pageTotal = result.data.pageTotal;
         this.renderer(result);
 
+        //准备加载搜索框
+        let searchBarViewHtml = searchBarView();
+        this.fixdEle = $(searchBarViewHtml);
         //当数据都加载完毕后加载轮播
         let swiper = new Swiper('.swiper-container', {
             pagination: {
@@ -51,70 +59,57 @@ class Position {
             autoplay: true,
         });
         //滚动设置
-        let $head_img = $('.head img');
         let $foot_img = $('.foot img');
-                
+
         //初始化滚动区域
         let bScroll = new BScroll.default($main.get(0), {
-            probeType: 2,
-            bounce : false
+            probeType: 3,
+            bounce: false,
+            scrollbar: true
         });
-
-        let bScrollInner = new BScroll.default($('.home-box').get(0),{
-            probeType:2,
-            scrollbar : true,
-        })
-        bScrollInner.scrollBy(0,-40);
         //初始化滚动区域的位置
         // bScroll.scrollBy(0 ,-40,500);
-        bScrollInner.on('scrollEnd', async function () {
-            if(this.y>-40&&this.y<0){
-                bScrollInner.scrollBy(0 ,-40,500);
-            }
-            //下拉刷新
-            if (this.y >= 0) {
-                that.pageNo = 1;
-                $foot_img.css({
-                    display : 'block'
-                });
-                $foot_img.siblings('b').html("上拉加载更多...");
-                $head_img.attr('src', '/assets/images/ajax-loader.gif');
-                let result = await PositionModel.get({
-                    pageNo : 1
-                });
-                that.list = [];
-                that.renderer(result);
-                bScrollInner.scrollBy(0 ,-40,500);
-                $head_img.attr('src', '/assets/images/arrow.png');
-                $head_img.removeClass('up');
-            }
-            if(this.y <= this.maxScrollY && that.pageNo<that.pageTotal){
-                that.pageNo ++;
+        bScroll.on('scrollEnd', async function () {
+            if (this.y <= this.maxScrollY && that.pageNo < that.pageTotal) {
+                that.pageNo++;
                 $foot_img.attr('src', '/assets/images/ajax-loader.gif')
                 // $foot_img.siblings('b').html("释放以刷新");
                 let result = await PositionModel.get({
-                    pageNo:that.pageNo
+                    pageNo: that.pageNo
                 });
                 that.renderer(result);
-                bScrollInner.scrollBy(0,40,500);
-                $foot_img.attr('src','/assets/images/arrow.png');
+                bScroll.scrollBy(0, 40, 500);
+                $foot_img.attr('src', '/assets/images/arrow.png');
                 $foot_img.removeClass('down');
-            }else if(that.pageNo>=that.pageTotal){
+            } else if (that.pageNo >= that.pageTotal) {
                 $foot_img.css({
                     display: 'none'
                 });
                 $foot_img.siblings('b').html("没有更多了");
             }
+            
         })
-        bScrollInner.on('scroll', function () {
-            if (this.y > 0) {
-                $head_img.addClass('up')
-            }
-
+        bScroll.on('scroll', function () {
             if (this.maxScrollY > this.y) {
                 $foot_img.addClass('down');
             }
+            if (this.y <= - $search_size.top && !that.ifLoadSearch) {
+                that.fixdEle.addClass('shadow').insertBefore('.index-container');
+                that.ifLoadSearch = true;
+            }
+            if (this.y > - $search_size.top && that.ifLoadSearch) {
+                that.fixdEle.remove();
+                that.ifLoadSearch = false;
+            }
+            if(this.y<-800){
+                $back.addClass('active');
+            }else{
+                $back.removeClass('active');
+            }
+        })
+        $back.on('click',function(){
+            bScroll.scrollTo(0,0,500);
         })
     }
 }
-new Position();
+export default new Position();

@@ -1,13 +1,25 @@
 <div class="index-container">
+
     <main>
 
     </main>
+    <aside class="back-to-top">
+        <span class="yo-ico">&#xe600;</span>
+    </aside>
     <footer>
         <ul class="ul-nav">
-            <li class="active"><span class="icon-home"></span><h5>首页</h5></li>
-            <li><span class="icon-categroy"></span><h5>分类</h5></li>
-            <li><span class="icon-cart"></span><h5>购物车</h5></li>
-            <li><span class="icon-profile"></span><h5>个人中心</h5></li>
+            <li data-to="position" class="active"><span class="icon-home"></span>
+                <h5>首页</h5>
+            </li>
+            <li data-to="categroy"><span class="icon-categroy"></span>
+                <h5>分类</h5>
+            </li>
+            <li data-to="cart"><span class="icon-cart"></span>
+                <h5>购物车</h5>
+            </li>
+            <li data-to="profile"><span class="icon-profile"></span>
+                <h5>个人中心</h5>
+            </li>
         </ul>
     </footer>
 

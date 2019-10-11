@@ -4,10 +4,12 @@ const connect = require('gulp-connect');
 const sass = require("gulp-sass");
 const webpack = require("webpack-stream");
 const proxy = require('http-proxy-middleware');
+
+const dirPath = "../../dev/";
 function gulpServer(){
     return connect.server({
         name : "mobileApp",
-        root:"./dev/",
+        root:`${dirPath}`,
         port:"8080",
         livereload : true,
         middleware : ()=>{
@@ -24,24 +26,24 @@ function gulpServer(){
     });
 }
 function copyHTML(){
-    return src("./src/*.html")
-            .pipe(dest("./dev/"))
+    return src("../*.html")
+            .pipe(dest(`${dirPath}`))
             .pipe(connect.reload())
 }
 
 function copySCSS(){
-    return src(["./src/styles/**/*.scss","!./src/styles/yo/**/*.scss"])
+    return src(["../styles/**/*.scss","!../styles/yo/**/*.scss"])
             .pipe(sass().on('error', sass.logError))
-            .pipe(dest("./dev/styles/"))
+            .pipe(dest(`${dirPath}styles/`))
             .pipe(connect.reload())
 }
 function packJS(){
-    return src(["./src/scripts/app.js"])
+    return src(["../scripts/app.js"])
     .pipe(webpack({
         mode:"development",//production开发模式
-        entry: "./src/scripts/app.js",
+        entry: "../scripts/app.js",
         output:{
-            path : path.resolve(__dirname,'./dev'),//文件路径自动解析拼接
+            path : path.resolve(__dirname,`${dirPath}`),//文件路径自动解析拼接
             filename : 'app.js'
         },
         module:{
@@ -56,26 +58,26 @@ function packJS(){
             ]
         }
     }))
-    .pipe(dest('./dev/scripts/'))
+    .pipe(dest(`${dirPath}scripts/`))
     .pipe(connect.reload())
 }
 function copyLibs(){
-    return src("./src/libs/**/*")
-            .pipe(dest('./dev/libs/'))
+    return src("../libs/**/*")
+            .pipe(dest(`${dirPath}libs/`))
             .pipe(connect.reload())
 }
 
 function watchFile(){
-    watch('./src/*.html',series(copyHTML));
-    watch("./src/styles/**/*.scss",series(copySCSS));
-    watch('./src/scripts/**/*',series(packJS));
-    watch('./src/libs/*',series(copyLibs));
-    watch('./src/assets/**/*',series(copyAssets));
+    watch('../*.html',series(copyHTML));
+    watch("../styles/**/*.scss",series(copySCSS));
+    watch('../scripts/**/*',series(packJS));
+    watch('../libs/*',series(copyLibs));
+    watch('../assets/**/*',series(copyAssets));
 }
 
 function copyAssets(){
-    return src('./src/assets/**/*')
-            .pipe(dest('./dev/assets'))
+    return src('../assets/**/*')
+            .pipe(dest(`${dirPath}/assets`))
             .pipe(connect.reload());
 }
 exports.default = series(parallel(copyHTML,copySCSS,packJS,copyLibs,copyAssets),parallel(gulpServer,watchFile));
