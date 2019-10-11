@@ -53,4 +53,4 @@ function copyAssets() {
     return src('../assets/**/*')
         .pipe(dest(`${dirPath}/assets`))
 }
-exports.default =series(parallel(copySCSS, packJS, copyLibs, copyAssets) ,copyHTML);
+exports.default = series(parallel(copySCSS, packJS, copyLibs, copyAssets) ,copyHTML);

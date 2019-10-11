@@ -1,0 +1,8 @@
+<section class="search-bar-wrap">
+    <h2 class="search-bar">
+        <aside class="search-icon">
+            <span class="yo-ico">&#xe741;</span>
+        </aside>
+        <aside class="search-val">T恤</aside>
+    </h2>
+</section>

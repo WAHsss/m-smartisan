@@ -2,6 +2,7 @@ const positionView = require('../views/position.art');
 const positionListView = require('../views/position-list.art');
 const positionSwiperView = require('../views/position-swiper.art');
 const PositionModel = require('../models/position');
+const searchBarView = require('../views/search-bar.art');
 const BScroll = require('better-scroll');
 class Position {
     constructor() {
@@ -9,6 +10,7 @@ class Position {
         this.pageNo = 1;
         this.pageTotal = 0;
         this.fixdEle = null;
+        this.ifLoadSearch = false;
     }
     renderer(result) {
         this.list = [...this.list, ...result.data.skuInfo];
@@ -43,6 +45,9 @@ class Position {
         this.pageTotal = result.data.pageTotal;
         this.renderer(result);
 
+        //准备加载搜索框
+        let searchBarViewHtml = searchBarView();
+        this.fixdEle = $(searchBarViewHtml);
         //当数据都加载完毕后加载轮播
         let swiper = new Swiper('.swiper-container', {
             pagination: {
@@ -88,16 +93,13 @@ class Position {
             if (this.maxScrollY > this.y) {
                 $foot_img.addClass('down');
             }
-            if (this.y <= - $search_size.top) {
-                if (!that.fixdEle) {
-                    that.fixdEle = $search.clone();
-                    that.fixdEle.addClass('shadow').insertBefore('.index-container');
-                }
-            } else {
-                if (that.fixdEle != null) {
-                    that.fixdEle.remove();
-                    that.fixdEle = null;
-                }
+            if (this.y <= - $search_size.top && !that.ifLoadSearch) {
+                that.fixdEle.addClass('shadow').insertBefore('.index-container');
+                that.ifLoadSearch = true;
+            }
+            if (this.y > - $search_size.top && that.ifLoadSearch) {
+                that.fixdEle.remove();
+                that.ifLoadSearch = false;
             }
             if(this.y<-800){
                 $back.addClass('active');
