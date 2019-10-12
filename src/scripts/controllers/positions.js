@@ -87,12 +87,20 @@ class Position {
                 });
                 $foot_img.siblings('b').html("没有更多了");
             }
-            
+
         })
         bScroll.on('scroll', function () {
+            //判断是否滑动到底部
             if (this.maxScrollY > this.y) {
                 $foot_img.addClass('down');
             }
+            //判断是否显示回到顶部的按钮
+            if (this.y < -800) {
+                $back.addClass('active');
+            } else {
+                $back.removeClass('active');
+            }
+            //吸顶效果
             if (this.y <= - $search_size.top && !that.ifLoadSearch) {
                 that.fixdEle.addClass('shadow').insertBefore('.index-container');
                 that.ifLoadSearch = true;
@@ -101,14 +109,10 @@ class Position {
                 that.fixdEle.remove();
                 that.ifLoadSearch = false;
             }
-            if(this.y<-800){
-                $back.addClass('active');
-            }else{
-                $back.removeClass('active');
-            }
+
         })
-        $back.on('click',function(){
-            bScroll.scrollTo(0,0,500);
+        $back.on('click', function () {
+            bScroll.scrollTo(0, 0, 500);
         })
     }
 }

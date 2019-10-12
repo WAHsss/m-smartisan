@@ -1,3 +1,14 @@
+header {
+    background-color: #fff;
+    height: .4rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+       font-size: .25rem; 
+    }
+}
 .search-bar-wrap{
     background-color: #fff;
     height: .52rem;
@@ -22,15 +33,16 @@
             margin-left: .09rem;
         }
     }
+    &.shadow{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        box-shadow: 0 1px 0 hsla(0,0%,40%,.1);
+        z-index: 999;
+    }
 }
-.shadow{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    box-shadow: 0 1px 0 hsla(0,0%,40%,.1);
-    z-index: 999;
-}
+
 .scroll-container{
     .head,.foot{
         height: .4rem;

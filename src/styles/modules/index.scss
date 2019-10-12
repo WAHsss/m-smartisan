@@ -3,17 +3,6 @@
     flex-direction: column;
     height: 100%;
     
-    header {
-        background-color: #fff;
-        height: .4rem;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        span {
-           font-size: .25rem; 
-        }
-    }
 
     main {
         flex: 1;
@@ -24,6 +13,7 @@
         background-color: #fff;
         box-shadow: 0 -11px 32px rgba(0,0,0,.08);
         height: .62rem;
+        position: relative;
         .ul-nav {
             display: flex;
             padding: 0 .4rem;

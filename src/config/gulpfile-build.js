@@ -43,7 +43,10 @@ function packJS() {
                 ]
             }
         }))
+        .pipe(rev())
         .pipe(dest(`${dirPath}scripts/`))
+        .pipe(rev.manifest())
+        .pipe(dest(`${dirPath}rev/scripts/`))
 }
 function copyLibs() {
     return src("../libs/**/*")

@@ -1,1 +1,16 @@
-<div>分类</div>
+<div class="categroy-wrapper">
+    <div class="body-wrap">
+        <section class="left-wrap">
+            <ul class="categroy-router-list">
+                {{each list}}
+                    <li class="categroy-router-item" data-id={{$value.classifyId}}>{{$value.classifyName}}</li>
+                {{/each}}
+            </ul>
+        </section>
+        <section class="right-wrap">
+            <div class="sub-page-scroll-wrap">
+
+            </div>
+        </section>
+    </div>
+</div>
