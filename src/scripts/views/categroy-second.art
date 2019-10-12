@@ -11,7 +11,7 @@
         <h1 class="second-classify-tit">{{$value.classifyName}}</h1>
         <aside class="third-flex-wrap">
             {{each $value.third}}
-            <figure class="third-item" data-id={{$value.classifyId}}>
+            <figure class="third-item" data-id={{$value.classifyId}} >
                 <div class="third-img-wrap">
                     <img src={{$value.image}} alt="">
                 </div>
