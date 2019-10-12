@@ -2,15 +2,12 @@ import categroyView from '../views/categroy.art';
 import categroySecondView from '../views/categroy-second.art';
 import searchBarView from '../views/search-bar.art';
 import catagroyModel from '../models/categroy';
+import BScroll from 'better-scroll';
 
 class Categroy {
     async render() {
         this.currIndex = 0;
         this.bScroll = null;
-        //注意每次重新载入二级页面都需要重新获取高度
-        this.th = 0;3
-        //this.boundryY = 0;
-        // this.scrollTop = 0;
         //获取搜索框
         let searchBarHtml = searchBarView();
 
@@ -27,8 +24,12 @@ class Categroy {
         this.$scroll_wrap = $('.right-wrap');
         this.$scroll_cont = $('.sub-page-scroll-wrap');
         this.$router = $('.categroy-router-item');
+        this.bScroll = new BScroll(this.$scroll_wrap.get(0),{
+            probeType:3,
+            bounce : false,
+            mouseWheel: true
+        });
         this.renderer();
-        this.scrollTop = this.$scroll_wrap.scrollTop();
         this.bindEvent();
     }
     renderer(){
@@ -37,40 +38,28 @@ class Categroy {
             item: this.data[this.currIndex]
         })
         this.$scroll_cont.html(categroySecondViewHtml);
-        this.$scroll_wrap.scrollTop(0);
-        //页面数据重新渲染，需重新获取滚动的高度
-        this.th = this.$scroll_wrap.get(0).scrollHeight;
-        //this.boundryY = this.th - this.$scroll_wrap.get(0).clientHeight;
+        this.bScroll.refresh();
     }
     bindEvent(){
-        let startY,moveEndY,Y,h,_y = 0;
-        this.$router.on('tap',this.changeSecond.bind(this));
+        this.$router.on('click',this.changeSecond.bind(this));
+        let startY = 0 , moveEndY = 0 , y = 0;
         $(document).on('touchstart',(e)=>{
-            startY = e.touches[0].pageY;
-            // _y = this.scrollTop;
-        });
+            startY =  e.touches[0].pageY;
+        })
         $(document).on('touchmove',(e)=>{
             moveEndY = e.changedTouches[0].pageY;
-            Y = moveEndY - startY;
-            h =this.$scroll_wrap.scrollTop()+this.$scroll_wrap.get(0).clientHeight;
-            // _y = Math.abs(Y);
-            // if(Y<0){
-            //    _y < this.boundryY ? _y : _y = this.boundryY;
-            //    this.$scroll_wrap.scrollTop(_y);
-            // }
-            
-        });
-        $(document).on("touchend",(e)=>{
-            if(Y<0 && this.th === h){
+            y = moveEndY - startY;
+        })
+        this.bScroll.on("touchEnd",(e)=>{
+            if(y<0 && this.bScroll.y <= this.bScroll.maxScrollY){
                 console.log('向下',"到底了");
                 this.changeCurrIndex(true) ? this.renderer() : '';
-            }
-            if(Y>0 && this.$scroll_wrap.scrollTop() === 0){
+                y =0;
+            }else if(y>0 && this.bScroll.y >= 0){
                 console.log("向上","到底了");
                 this.changeCurrIndex() ? this.renderer() : '';
+                y=0;
             }
-            // this.scrollTop = _y+this.scrollTop;
-            // _y = 0;
         })
     }
     changeSecond(evt){
@@ -82,7 +71,7 @@ class Categroy {
     changeCurrIndex(boo){
         let length = this.data.length-1;
         boo ? this.currIndex ++ : this.currIndex --;
-        console.log(this.currIndex);
+        //console.log(this.currIndex);
         if(this.currIndex > length){
             this.currIndex = length;
             return false;

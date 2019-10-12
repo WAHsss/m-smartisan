@@ -14,7 +14,7 @@ function copyHTML() {
         .pipe(dest(`${dirPath}`))
 }
 function copySCSS() {
-    return src(["../styles/**/*.scss", "!../styles/yo/**/*.scss"])
+    return src(["../styles/*.scss"])
         .pipe(sass().on('error', sass.logError))
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(rev())

@@ -65,7 +65,8 @@ class Position {
         let bScroll = new BScroll.default($main.get(0), {
             probeType: 3,
             bounce: false,
-            scrollbar: true
+            scrollbar: true,
+            mouseWheel:true
         });
         //初始化滚动区域的位置
         // bScroll.scrollBy(0 ,-40,500);
@@ -78,6 +79,7 @@ class Position {
                     pageNo: that.pageNo
                 });
                 that.renderer(result);
+                this.refresh();
                 bScroll.scrollBy(0, 40, 500);
                 $foot_img.attr('src', '/assets/images/arrow.png');
                 $foot_img.removeClass('down');

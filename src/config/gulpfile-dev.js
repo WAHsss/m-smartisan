@@ -32,7 +32,7 @@ function copyHTML(){
 }
 
 function copySCSS(){
-    return src(["../styles/**/*.scss","!../styles/yo/**/*.scss"])
+    return src(["../styles/*.scss",])
             .pipe(sass().on('error', sass.logError))
             .pipe(dest(`${dirPath}styles/`))
             .pipe(connect.reload())

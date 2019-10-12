@@ -3,16 +3,19 @@ import positionController from '../controllers/positions';
 import categroyController from '../controllers/categroy';
 import cartController from '../controllers/cart';
 import profileController from '../controllers/profile';
+import shopController from '../controllers/shop';
+import detailController from '../controllers/detail';
 
 class Router{
     constructor(){
-        indexController.render();
         this.render();
         this.pageControllers = {
             positionController,
             categroyController,
             cartController,
-            profileController
+            profileController,
+            shopController,
+            detailController
         }
     }
     render(){
@@ -27,14 +30,21 @@ class Router{
     }
     loadHandler(){
         let hash = location.hash.substring(1) || 'position';
+        let reg = new RegExp('^(\\w+)','g');
+        let path = reg.exec(hash);
+
+        indexController.render();
         location.hash = hash;
-        this.renderDOM(hash);
-        this.setActiveClass(hash);
+
+        this.renderDOM(path[1]);
+        this.setActiveClass(path[1]);
     }
     hashChangeHandler(){
         let hash = location.hash.substring(1);
-        this.renderDOM(hash);
-        this.setActiveClass(hash);
+        let reg = new RegExp('^(\\w+)','g');
+        let path = reg.exec(hash);
+        this.renderDOM(path[1]);
+        this.setActiveClass(path[1]);
     }
    
 }
