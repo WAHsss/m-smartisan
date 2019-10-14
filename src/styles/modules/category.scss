@@ -1,4 +1,4 @@
-.categroy-wrapper{
+.category-wrapper{
     height: 100%;
     overflow: hidden;
     display: flex;
@@ -15,11 +15,11 @@
             padding: .31rem .07rem 0;
             background-color: #fff;
             @include border(0 1px 0 0,#ccc,solid);
-            .categroy-router-list{
+            .category-router-list{
                 width: 100%;
                 display: flex;
                 flex-direction: column;
-                .categroy-router-item{
+                .category-router-item{
                     width: 100%;
                     color: rgba($color: #000000, $alpha: .6);
                     font-size: .14rem;

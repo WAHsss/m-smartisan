@@ -9,6 +9,10 @@ header {
        font-size: .25rem; 
     }
 }
+.scroll-container-warp{
+    height: 100%;
+    overflow: hidden;
+}
 .search-bar-wrap{
     background-color: #fff;
     height: .52rem;
@@ -153,27 +157,26 @@ header {
                     text-overflow: ellipsis;
                     overflow: hidden;
                     color: rgba(0, 0, 0, .7);
-                    font-size: .13rem;
-                }
-            }
-
-            .product-price {
-                padding: 0 6px;
-                color: #d44d44;
-                font-weight: 700;
-                .money-categroy {
-                    font-size: .12rem;
-                    margin-right: .03rem;
-                    line-height: .14rem;
-                }
-
-                .money-num {
                     font-size: .14rem;
-                    line-height: .14rem;
                 }
             }
         }
 
+    }
+}
+.product-price {
+    padding: 0 6px;
+    color: #d44d44;
+    font-weight: 700;
+    .money-category {
+        font-size: .12rem;
+        margin-right: .03rem;
+        line-height: .14rem;
+    }
+
+    .money-num {
+        font-size: .14rem;
+        line-height: .14rem;
     }
 }
 

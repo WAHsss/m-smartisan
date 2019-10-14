@@ -1,9 +1,9 @@
-<div class="categroy-wrapper">
+<div class="category-wrapper">
     <div class="body-wrap">
         <section class="left-wrap">
-            <ul class="categroy-router-list">
+            <ul class="category-router-list">
                 {{each list}}
-                    <li class="categroy-router-item" data-id={{$value.classifyId}}>{{$value.classifyName}}</li>
+                    <li class="category-router-item" data-id={{$value.classifyId}}>{{$value.classifyName}}</li>
                 {{/each}}
             </ul>
         </section>
@@ -13,4 +13,5 @@
             </div>
         </section>
     </div>
+
 </div>

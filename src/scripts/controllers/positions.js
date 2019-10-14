@@ -3,14 +3,13 @@ const positionListView = require('../views/position-list.art');
 const positionSwiperView = require('../views/position-swiper.art');
 const PositionModel = require('../models/position');
 const searchBarView = require('../views/search-bar.art');
-const BScroll = require('better-scroll');
+import BScroll from 'better-scroll';
 class Position {
     constructor() {
         this.list = [];
         this.pageNo = 1;
         this.pageTotal = 0;
         this.fixdEle = null;
-        this.ifLoadSearch = false;
     }
     renderer(result) {
         this.list = [...this.list, ...result.data.skuInfo];
@@ -20,7 +19,7 @@ class Position {
         $('.product-list-wrap').html(positionListHtml);
     }
     async render() {
-
+        this.ifLoadSearch = false;
         let that = this;
         //加载主体
         let $main = $('main');
@@ -62,8 +61,8 @@ class Position {
         let $foot_img = $('.foot img');
 
         //初始化滚动区域
-        let bScroll = new BScroll.default($main.get(0), {
-            probeType: 3,
+        let bScroll = new BScroll($('.scroll-container-warp').get(0), {
+            probeType: 2,
             bounce: false,
             scrollbar: true,
             mouseWheel:true
@@ -107,14 +106,16 @@ class Position {
                 that.fixdEle.addClass('shadow').insertBefore('.index-container');
                 that.ifLoadSearch = true;
             }
-            if (this.y > - $search_size.top && that.ifLoadSearch) {
+            if ((this.y > - $search_size.top) && that.ifLoadSearch) {
                 that.fixdEle.remove();
                 that.ifLoadSearch = false;
             }
 
         })
-        $back.on('click', function () {
+        $back.on('tap', function () {
             bScroll.scrollTo(0, 0, 500);
+            $back.removeClass('active');
+            that.fixdEle.remove();
         })
     }
 }

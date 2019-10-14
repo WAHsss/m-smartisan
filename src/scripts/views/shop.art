@@ -1,1 +1,25 @@
-<div>shop</div>
+<section class="back-bar">
+    <h1 class="spu-tit">商品列表</h1>
+    <aside>返回</aside>
+</section>
+<section class="shop-scroll-cont">
+    <ul class="shop-list-wrap">
+        <li class="shop-list-item">
+            <figure class="product-img-wrap">
+                <img src="https://resource.smartisan.com/resource/22c95761b040112ee4ff6e4653691ae6.png?x-oss-process=image/resize,w_417/format,webp" alt="">
+            </figure>
+            <section class="product-details">
+                <h2 class="product-tit">Smartisan T恤 薛定谔</h2>
+                <ul class="product-color-list">
+                    <li class="color-list-item">
+                        <img src="https://resource.smartisan.com/resource/e647e77234f9ed0fde9dd4084d35ff57.jpg" alt="">
+                    </li>
+                </ul>
+                <div class="product-price">
+                    <span class="money-category">￥</span>
+                    <span class="price-num">219</span>
+                </div>
+            </section>
+        </li>
+    </ul>
+</section>

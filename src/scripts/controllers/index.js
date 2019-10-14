@@ -1,13 +1,15 @@
 const layoutView = require('../views/layout.art');
 
+
 class Index {
     render() {
         const html = layoutView({});
         $('#root').html(html);
-        $('footer li').on('click',this.bindClick)
+        $('footer li').on('tap',this.bindTap);
     }
-    bindClick(){
+    bindTap(){
         location.hash = $(this).data('to');
+        $('.search-bar-wrap').remove();
     }
 }
 

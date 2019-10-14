@@ -1,7 +1,9 @@
 import shopView from '../views/shop.art';
+import shopModel from '../models/shop';
 
 class ShopView{
-    render(){
+    async render(){
+        // let data = await 
         let shopViewHtml = shopView();
         $('main').html(shopViewHtml);
     }

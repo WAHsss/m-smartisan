@@ -1,6 +1,6 @@
 import indexController from '../controllers/';
 import positionController from '../controllers/positions';
-import categroyController from '../controllers/categroy';
+import categoryController from '../controllers/category';
 import cartController from '../controllers/cart';
 import profileController from '../controllers/profile';
 import shopController from '../controllers/shop';
@@ -11,7 +11,7 @@ class Router{
         this.render();
         this.pageControllers = {
             positionController,
-            categroyController,
+            categoryController,
             cartController,
             profileController,
             shopController,
@@ -27,6 +27,7 @@ class Router{
     } 
     renderDOM(hash){
         this.pageControllers[`${hash}Controller`].render();
+        
     }
     loadHandler(){
         let hash = location.hash.substring(1) || 'position';
