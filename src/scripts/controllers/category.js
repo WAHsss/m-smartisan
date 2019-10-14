@@ -39,14 +39,13 @@ class Category {
         })
         this.$scroll_cont.html(categorySecondViewHtml);
         this.bScroll.refresh();
-        $('.third-item').on('tap',function(){
+        $('.third-item , .banner-container').on('tap',function(){
             let spu = $(this).data('spu');
             if(Number(spu)){
                 location.hash = 'detail/'+spu;
             }else{
                 location.hash = 'shop/'+spu;
             }
-            // location.hash = ;
         })
     }
     bindEvent(){
@@ -70,7 +69,6 @@ class Category {
         })
     }
     changeSecond(evt){
-        console.log(1);
         let {target} = evt;
         let $ele = $(target);
         this.currIndex = $ele.index();

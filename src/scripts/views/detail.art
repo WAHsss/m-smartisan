@@ -1,1 +1,16 @@
-<div>detail</div>
+<section class="back-bar">
+    <h1 class="spu-tit">Smartisan 帆布鞋</h1>
+    <aside>返回</aside>
+</section>
+<ul class="stairs-list">
+    <li class="stairs-item">商品</li>
+    <li class="stairs-item">详情</li>
+    <li class="stairs-item">参数</li>
+    <li class="stairs-item">推荐</li>
+</ul>
+
+<div class="detail-scroll-cont">
+    <div class="detail-scroll-wrap">
+        <section class=""></section>
+    </div>
+</div>

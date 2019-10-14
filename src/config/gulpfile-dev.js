@@ -22,7 +22,7 @@ function gulpServer(){
                     }
                 }),
                 proxy('/shopapi',{
-                    target:'https://shopapi.smartisan.com/v1/search/goods-list?page=1&num=20&sort=sort&channel_id=1002&type=shop',
+                    target:'https://shopapi.smartisan.com/v1/search/goods-list',
                     changeOrigin : true,
                     pathRewrite:{
                         '^/shopapi':''

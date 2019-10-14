@@ -59,7 +59,7 @@
             padding: 3.4vw;
             display: flex;
             align-items: center;
-            @include border(0 0 1px 0 , #ccc)
+            @include border(0 0 1px 0 , #ccc);
             .product-img-wrap{
                 width: 33.57vw;
                 height: 0;
@@ -77,6 +77,11 @@
                     font-size: 3.4vm;
                     color: #333;
 
+                }
+                .product-subtit{
+                    font-size: 2.8vw;
+                    color: #7f7f7f;
+                    margin-top: 1.2vw;
                 }
                 .product-color-list{
                     margin-top: 2.4vw;

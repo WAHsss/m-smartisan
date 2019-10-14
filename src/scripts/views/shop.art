@@ -4,22 +4,27 @@
 </section>
 <section class="shop-scroll-cont">
     <ul class="shop-list-wrap">
-        <li class="shop-list-item">
+        {{each list}}
+        <li class="shop-list-item" data-id={{$value.spuInfo.spuId}}>
             <figure class="product-img-wrap">
-                <img src="https://resource.smartisan.com/resource/22c95761b040112ee4ff6e4653691ae6.png?x-oss-process=image/resize,w_417/format,webp" alt="">
+                <img src={{$value.spuInfo.images}} alt="">
             </figure>
             <section class="product-details">
-                <h2 class="product-tit">Smartisan T恤 薛定谔</h2>
+                <h2 class="product-tit">{{$value.spuInfo.spuTitle}}</h2>
+                <h5 class="product-subtit">{{$value.spuInfo.spuSubTitle}}</h5>
                 <ul class="product-color-list">
+                    {{each $value.skuList}}
                     <li class="color-list-item">
-                        <img src="https://resource.smartisan.com/resource/e647e77234f9ed0fde9dd4084d35ff57.jpg" alt="">
+                        <img src={{$value.skuColor}} alt="">
                     </li>
+                    {{/each}}
                 </ul>
                 <div class="product-price">
                     <span class="money-category">￥</span>
-                    <span class="price-num">219</span>
+                    <span class="price-num">{{$value.spuInfo.price}}.00</span>
                 </div>
             </section>
         </li>
+        {{/each}}
     </ul>
 </section>

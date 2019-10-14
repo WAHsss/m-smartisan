@@ -1,7 +1,7 @@
 <section class="sub-page" data-id={{item.classifyId}}>
     {{if item.banner}}
     <div class="banner-wrpper">
-        <figure class="banner-container">
+        <figure class="banner-container" data-spu={{item.banner[0].url.split('/').pop()}}>
             <img src={{item.banner[0].image}} alt="">
         </figure>
     </div>
