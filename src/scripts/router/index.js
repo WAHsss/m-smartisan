@@ -4,7 +4,7 @@ import categoryController from '../controllers/category';
 import cartController from '../controllers/cart';
 import profileController from '../controllers/profile';
 import shopController from '../controllers/shop';
-import detailController from '../controllers/detail';
+//import detailController from '../controllers/detail';
 
 class Router{
     constructor(){
@@ -15,7 +15,7 @@ class Router{
             cartController,
             profileController,
             shopController,
-            detailController
+            //detailController
         }
     }
     render(){

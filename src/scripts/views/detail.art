@@ -1,16 +1,97 @@
-<section class="back-bar">
-    <h1 class="spu-tit">Smartisan 帆布鞋</h1>
-    <aside>返回</aside>
-</section>
-<ul class="stairs-list">
-    <li class="stairs-item">商品</li>
-    <li class="stairs-item">详情</li>
-    <li class="stairs-item">参数</li>
-    <li class="stairs-item">推荐</li>
-</ul>
+<div class="detail-container">
+    <header class="back-bar">
+        <h1 class="spu-tit">Smartisan 帆布鞋</h1>
+        <aside>返回</aside>
+    </header>
+    <ul class="stairs-list">
+        <li class="stairs-item active">商品</li>
+        <li class="stairs-item">详情</li>
+        <li class="stairs-item">参数</li>
+        <li class="stairs-item">推荐</li>
+    </ul>
 
-<div class="detail-scroll-cont">
-    <div class="detail-scroll-wrap">
-        <section class=""></section>
-    </div>
+    <main class="detail-scroll-cont">
+        <div class="detail-scroll-wrap">
+            <section class="swiper-container">
+                <ul class="swiper-wrapper">
+                    <li class="swiper-slide">
+                        <img src="https://resource.smartisan.com/resource/ebb01298315bf2ebdb6b21ee2c8e4237.jpg?x-oss-process=image/format,webp" alt="">
+                    </li>
+                    <li class="swiper-slide">
+                        <img src="https://resource.smartisan.com/resource/51958a0a771f24e405f1b5de98108528.jpg?x-oss-process=image/format,webp" alt="">
+                    </li>
+                    <li class="swiper-slide">
+                        <img src="https://resource.smartisan.com/resource/bd634d820859032b4c0f7a521eda486d.jpg?x-oss-process=image/format,webp" alt="">
+                    </li>
+                </ul>
+                <div class="swiper-pagination"></div>
+            </section>
+            <section>
+                <h3>Smartisan 帆布鞋</h3>
+                <p class="sub-tit">ask你和对方教案或部分</p>
+                <div class="">
+                    <div class="product-price">
+                        <span class="money-category">￥</span>
+                        <span class="money-num">199.00</span>
+                    </div>
+                    <div class=""></div>
+                </div>
+            </section>
+            <section>
+                <h6>已选版本</h6>
+                <article class="selected-cont">
+                    <p>颜色： <span>酒红色</span></p>
+                    <p>尺码： <span>尺码</span></p>
+                    <p>数量： <span>1</span></p>
+                </article>
+            </section>
+            <section class="detail-img-list">
+                <h3>商品详情</h3>
+                <ul>
+                    <li>
+
+                    </li>
+                </ul>
+            </section>
+            <section class="section-floor">
+                <h3 class="tit-header">技术参数</h3>
+                <ul class="specs-main">
+                    <li class="box-line">
+                        <h6>颜色</h6>
+                        <span></span>
+                    </li>
+                </ul>
+            </section>
+            <section class="section-floor">
+                <h3 class="tit-header">服务说明</h3>
+                <ul class="item-box-column">
+                    <li class="box-line">
+                        <h6>颜色</h6>
+                        <span></span>
+                    </li>
+                </ul>
+            </section>
+            <section class="section-floor">
+                <h3 class="tit-header">相关推荐</h3>
+                <ul class="recom-box">
+                    <li class="recom-box">
+                        <div class="recom-img-wrap"></div>
+                        <article>
+                            <h1>坚果 Pro 2S</h1>
+                            <p>双系统，无限屏</p>
+                            <div class="product-price">
+                                <span class="money-category">￥</span>
+                                <span class="money-num">199.00</span>
+                            </div>
+                        </article>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </main>
+    <footer class="detail-footer">
+        <ul class="footer-container">
+            <li class="footer-item"></li>
+        </ul>
+    </footer>
 </div>

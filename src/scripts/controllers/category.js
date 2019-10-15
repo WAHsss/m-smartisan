@@ -42,7 +42,7 @@ class Category {
         $('.third-item , .banner-container').on('tap',function(){
             let spu = $(this).data('spu');
             if(Number(spu)){
-                location.hash = 'detail/'+spu;
+                location.href = 'detail.html/'+spu;
             }else{
                 location.hash = 'shop/'+spu;
             }

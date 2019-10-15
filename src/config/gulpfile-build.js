@@ -23,13 +23,16 @@ function copySCSS() {
         .pipe(dest(`${dirPath}rev/styles/`))
 }
 function packJS() {
-    return src(["../scripts/app.js"])
+    return src(["../scripts/*.js"])
         .pipe(webpack({
             mode: "production",//production开发模式
-            entry: "../scripts/app.js",
+            entry: {
+                app : "../scripts/app.js",
+                'app-detail' : "../script/app-detail.js"
+            },
             output: {
                 path: path.resolve(__dirname, `${dirPath}`),//文件路径自动解析拼接
-                filename: 'app.js'
+                filename: '[name].js'
             },
             module: {
                 rules: [
@@ -39,6 +42,13 @@ function packJS() {
                     }, {
                         test: /\.art$/,
                         loader: 'art-template-loader'
+                    },{
+                        test:/\.scss$/,
+                        use:[
+                            'style-loader',
+                            'css-loader',
+                            'sass-loader'
+                        ]
                     }
                 ]
             }

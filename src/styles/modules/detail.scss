@@ -1,0 +1,63 @@
+.detail-container{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    //楼梯
+    .stairs-list{
+        font-size: .16rem;  
+        height: .56rem;
+        display: flex;
+        width: 100%;
+        padding: 0.1rem 0.07rem;
+        box-shadow: 0 5px 13px rgba(#000,.12);
+        .stairs-item{
+            flex-basis: 25%;
+            line-height: .35rem;
+            color: #606060;
+            font-weight: 700;
+            text-align: center;
+            @include border(1px 0 1px 1px , rgba(#000,.15));
+            &.active{
+                background: #bfbfbf;
+                background-image: linear-gradient(#aeaeae,#b3b3b3);
+                box-shadow: inset 0 1px 3px rgba(0,0,0,.15);
+                color: #fff;
+            }
+        }
+        li:first-child{
+            border-radius: .04rem 0 0 .04rem;
+        }
+        li:last-child{
+            border-radius: 0 .04rem .04rem 0 ;
+            @include border(1px 1px 1px 1px , rgba(#000,.15));
+        }
+      
+    }
+    .detail-scroll-cont{
+        flex: 1;
+        overflow: hidden;
+        .swiper-container{
+            width: 100%;
+            height: 3.31rem;
+            background-color: #fff;
+            .swiper-slide{
+                text-align: center;
+                img{
+                    height: 100%;
+                }
+            }
+            //为什么此处的子元素不跟随父元素的位置
+            .swiper-pagination{
+                height: 10px;
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+    .detail-footer{
+        background-color: #fff;
+        box-shadow: 0 -11px 32px rgba(0,0,0,.08);
+        position: relative;
+        height: .57rem;
+    }
+}

@@ -1,14 +1,4 @@
-header {
-    background-color: #fff;
-    height: .4rem;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    span {
-       font-size: .25rem; 
-    }
-}
+
 .scroll-container-warp{
     height: 100%;
     overflow: hidden;
@@ -85,20 +75,6 @@ header {
         }
     }
 
-    .my-bullet {
-        width: .08rem;
-        height: .08rem;
-        background-color: rgba(0, 0, 0, .8);
-        @include border(1, rgba(0, 0, 0, .08), solid, 50%);
-        display: inline-block;
-        margin: 0 4px;
-        opacity: .2;
-    }
-
-    .my-bullet-active {
-        background-color: #fff;
-        opacity: 1;
-    }
 }
 
 .home-box{
@@ -162,21 +138,6 @@ header {
             }
         }
 
-    }
-}
-.product-price {
-    padding: 0 6px;
-    color: #d44d44;
-    font-weight: 700;
-    .money-category {
-        font-size: .12rem;
-        margin-right: .03rem;
-        line-height: .14rem;
-    }
-
-    .money-num {
-        font-size: .14rem;
-        line-height: .14rem;
     }
 }
 
