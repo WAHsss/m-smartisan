@@ -3,6 +3,7 @@ import categorySecondView from '../views/category-second.art';
 import searchBarView from '../views/search-bar.art';
 import categoryModel from '../models/category';
 import BScroll from 'better-scroll';
+import store from 'store';
 
 class Category {
     async render() {
@@ -42,7 +43,8 @@ class Category {
         $('.third-item , .banner-container').on('tap',function(){
             let spu = $(this).data('spu');
             if(Number(spu)){
-                location.href = 'detail.html/'+spu;
+                location.href = 'detail.html';
+                store.set('product',spu);
             }else{
                 location.hash = 'shop/'+spu;
             }

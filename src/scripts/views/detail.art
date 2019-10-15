@@ -1,6 +1,6 @@
 <div class="detail-container">
     <header class="back-bar">
-        <h1 class="spu-tit">Smartisan 帆布鞋</h1>
+        <h1 class="spu-tit">{{list.name}}</h1>
         <aside>返回</aside>
     </header>
     <ul class="stairs-list">
@@ -14,74 +14,98 @@
         <div class="detail-scroll-wrap">
             <section class="swiper-container">
                 <ul class="swiper-wrapper">
+                    {{each list.sku_info}}
                     <li class="swiper-slide">
-                        <img src="https://resource.smartisan.com/resource/ebb01298315bf2ebdb6b21ee2c8e4237.jpg?x-oss-process=image/format,webp" alt="">
+                        <img src={{$value.ali_image}} alt="">
                     </li>
-                    <li class="swiper-slide">
-                        <img src="https://resource.smartisan.com/resource/51958a0a771f24e405f1b5de98108528.jpg?x-oss-process=image/format,webp" alt="">
-                    </li>
-                    <li class="swiper-slide">
-                        <img src="https://resource.smartisan.com/resource/bd634d820859032b4c0f7a521eda486d.jpg?x-oss-process=image/format,webp" alt="">
-                    </li>
+                    {{/each}}
                 </ul>
                 <div class="swiper-pagination"></div>
             </section>
-            <section>
-                <h3>Smartisan 帆布鞋</h3>
-                <p class="sub-tit">ask你和对方教案或部分</p>
-                <div class="">
-                    <div class="product-price">
-                        <span class="money-category">￥</span>
-                        <span class="money-num">199.00</span>
+
+            <section class="second-floor">
+                <section class="tit-box">
+                    <h3 class="tit-header">Smartisan 帆布鞋</h3>
+                    <p class="sub-tit">Smartisan 原装充电器</p>
+                    <div class="price-wrap">
+                        <div class="product-price">
+                            <span class="money-category">￥</span>
+                            <span class="money-num">199.00</span>
+                            <del class="money-origin-num">￥ 129.00</del>
+                        </div>
+                        <div class="postage-price">满 99 元包邮</div>
                     </div>
-                    <div class=""></div>
-                </div>
+                </section>
+                <section class="activities-wrap">
+                    <h5 class="activities-tit">优惠信息</h5>
+                    <div class="activities-box">
+                        <span class="activities-type">限时秒杀</span>
+                        <span class="activities-words">【仅一天】</span>
+                    </div>
+                </section>
             </section>
-            <section>
-                <h6>已选版本</h6>
+
+            <section class="box-line">
+                <h6 class="selected-tit">已选版本</h6>
                 <article class="selected-cont">
-                    <p>颜色： <span>酒红色</span></p>
-                    <p>尺码： <span>尺码</span></p>
-                    <p>数量： <span>1</span></p>
+                    <p><span class="selected-attr">颜色： </span> <span class="selected-value">酒红色</span></p>
+                    <p><span class="selected-attr">尺码： </span> <span class="selected-value">尺码</span></p>
+                    <p><span class="selected-attr">数量： </span> <span class="selected-value">尺码</span></p>
                 </article>
             </section>
             <section class="detail-img-list">
-                <h3>商品详情</h3>
+                <h2 class="stairs-tit">商品详情</h2>
                 <ul>
                     <li>
-
+                        <img src="https://resource.smartisan.com/resource/d878c7c29a96b9a57d3870b2da5a291c.png?x-oss-process=image/resize,w_1242/indexcrop,y_1440,i_0/format,webp"
+                            alt="">
                     </li>
                 </ul>
             </section>
-            <section class="section-floor">
-                <h3 class="tit-header">技术参数</h3>
+            <section class="second-floor">
+                <h3 class="stairs-tit">技术参数</h3>
                 <ul class="specs-main">
-                    <li class="box-line">
+                    <li class="tec-box">
                         <h6>颜色</h6>
-                        <span></span>
+                        <span>wp100</span>
+                    </li>
+                    <li class="tec-box">
+                        <h6>颜色</h6>
+                        <span>wp100</span>
                     </li>
                 </ul>
             </section>
-            <section class="section-floor">
-                <h3 class="tit-header">服务说明</h3>
-                <ul class="item-box-column">
-                    <li class="box-line">
-                        <h6>颜色</h6>
-                        <span></span>
+            <section class="second-floor">
+                <h3 class="stairs-tit">服务说明</h3>
+                <ul class="service-note">
+                    <li class="service-line return-policy">
+                        <span>七天无理由退货</span>
+                    </li>
+                    <li class="service-line exchange-policy">
+                        <span>15天质量问题换货</span>
+                    </li>
+                </ul>
+                <ul class="item-instruction">
+                    <li class="instruction-line">
+                        <span>15天质量问题换货</span>
                     </li>
                 </ul>
             </section>
-            <section class="section-floor">
-                <h3 class="tit-header">相关推荐</h3>
-                <ul class="recom-box">
+            <section class="second-floor">
+                <h3 class="stairs-tit">相关推荐</h3>
+                <ul class="recom-box-wrap container">
                     <li class="recom-box">
-                        <div class="recom-img-wrap"></div>
+                        <div class="recom-img-wrap">
+                            <img src="https://resource.smartisan.com/resource/b07b9765e272f866da6acda4ee107d88.png?x-oss-process=image/resize,w_567/format,webp"
+                                alt="">
+                        </div>
                         <article>
-                            <h1>坚果 Pro 2S</h1>
+                            <h2>坚果 Pro 2S</h2>
                             <p>双系统，无限屏</p>
                             <div class="product-price">
-                                <span class="money-category">￥</span>
-                                <span class="money-num">199.00</span>
+                                    <span class="money-category">￥</span>
+                                    <span class="money-num">199.00</span>
+                                    <span class="money-num-origin">199.00</span>
                             </div>
                         </article>
                     </li>
@@ -91,7 +115,15 @@
     </main>
     <footer class="detail-footer">
         <ul class="footer-container">
-            <li class="footer-item"></li>
+            <li class="footer-item">
+                <figure class="img-wrap"></figure>
+            </li>
+            <li class="footer-item">
+                <div class="buy-now">现在购买</div>
+            </li>
+            <li class="footer-item">
+                <div class="add-cart">加入购物车</div>
+            </li>
         </ul>
     </footer>
 </div>

@@ -28,6 +28,13 @@ function gulpServer(){
                         '^/shopapi':''
                     }
                 }),
+                proxy('/single',{
+                    target:'https://shopapi.smartisan.com/product/spus',
+                    changeOrigin : true,
+                    pathRewrite : {
+                        '^/single' : ''
+                    }
+                })
             ]
         }
     });
