@@ -9,7 +9,6 @@ class Index {
     }
     bindTap(){
         location.hash = $(this).data('to');
-        $('.search-bar-wrap').remove();
     }
 }
 

@@ -1,1 +1,1 @@
-import './router/detail'
+import './controllers/detail';

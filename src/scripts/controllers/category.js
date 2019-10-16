@@ -44,7 +44,7 @@ class Category {
             let spu = $(this).data('spu');
             if(Number(spu)){
                 location.href = 'detail.html';
-                store.set('product',spu);
+                store.set('productCurr',spu);
             }else{
                 location.hash = 'shop/'+spu;
             }

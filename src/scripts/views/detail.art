@@ -1,6 +1,6 @@
 <div class="detail-container">
     <header class="back-bar">
-        <h1 class="spu-tit">{{list.name}}</h1>
+        <h1 class="spu-tit">{{data.spu.name}}</h1>
         <aside>返回</aside>
     </header>
     <ul class="stairs-list">
@@ -12,71 +12,74 @@
 
     <main class="detail-scroll-cont">
         <div class="detail-scroll-wrap">
+            <h3 class="stairs-tit no-height">技术参数</h3>
             <section class="swiper-container">
                 <ul class="swiper-wrapper">
-                    {{each list.sku_info}}
-                    <li class="swiper-slide">
-                        <img src={{$value.ali_image}} alt="">
-                    </li>
-                    {{/each}}
                 </ul>
                 <div class="swiper-pagination"></div>
             </section>
 
             <section class="second-floor">
                 <section class="tit-box">
-                    <h3 class="tit-header">Smartisan 帆布鞋</h3>
-                    <p class="sub-tit">Smartisan 原装充电器</p>
+                    <h3 class="tit-header">{{data.spu.shop_info.spu_mobile_title}}</h3>
+                    <p class="sub-tit">{{data.shop_info.spu_mobile_sub_title}}</p>
                     <div class="price-wrap">
                         <div class="product-price">
                             <span class="money-category">￥</span>
-                            <span class="money-num">199.00</span>
-                            <del class="money-origin-num">￥ 129.00</del>
+                            {{if promotion[0]}}
+                                <span class="money-num">{{promotion[0].discount_price}}.00</span>
+                                <del class="money-origin-num"> ￥ {{data.price}}.00</del>
+                            {{else}}
+                                <span class="money-num">{{data.price}}.00</span>
+                                <del class="money-origin-num"></del>
+                            {{/if}}
                         </div>
-                        <div class="postage-price">满 99 元包邮</div>
+                        <div class="postage-price">满 {{data.shop_info.postage_info.fee_amount}} 元包邮</div>
                     </div>
                 </section>
                 <section class="activities-wrap">
                     <h5 class="activities-tit">优惠信息</h5>
-                    <div class="activities-box">
-                        <span class="activities-type">限时秒杀</span>
-                        <span class="activities-words">【仅一天】</span>
-                    </div>
+                    {{each promotion}}
+                        <div class="activities-box">
+                            <span class="activities-type">{{$value.tag}}</span>
+                            <span class="activities-words">{{$value.title}}</span>
+                        </div>
+                    {{/each}}
                 </section>
             </section>
 
             <section class="box-line">
                 <h6 class="selected-tit">已选版本</h6>
                 <article class="selected-cont">
-                    <p><span class="selected-attr">颜色： </span> <span class="selected-value">酒红色</span></p>
-                    <p><span class="selected-attr">尺码： </span> <span class="selected-value">尺码</span></p>
-                    <p><span class="selected-attr">数量： </span> <span class="selected-value">尺码</span></p>
+                    {{each attr}}
+                        <p><span class="selected-attr">{{$value.spec_name}}： </span> <span class="selected-value">{{$value.value}}</span></p>
+                    {{/each}}
                 </article>
             </section>
             <section class="detail-img-list">
                 <h2 class="stairs-tit">商品详情</h2>
                 <ul>
-                    <li>
-                        <img src="https://resource.smartisan.com/resource/d878c7c29a96b9a57d3870b2da5a291c.png?x-oss-process=image/resize,w_1242/indexcrop,y_1440,i_0/format,webp"
-                            alt="">
-                    </li>
+                    {{set temp = data.shop_info.tpl_content.base}}
+                    {{each temp.images.ali_mobile.url}}
+                        <li>
+                            <img src={{$value}} alt="">
+                        </li>
+                    {{/each}}
                 </ul>
             </section>
             <section class="second-floor">
                 <h3 class="stairs-tit">技术参数</h3>
                 <ul class="specs-main">
-                    <li class="tec-box">
-                        <h6>颜色</h6>
-                        <span>wp100</span>
-                    </li>
-                    <li class="tec-box">
-                        <h6>颜色</h6>
-                        <span>wp100</span>
-                    </li>
+                    {{each temp.attributes[0].list}}
+                        <li class="tec-box">
+                            <h6>{{$value.name}}</h6>
+                            <span>{{$value.value}}</span>
+                        </li>
+                    {{/each}}
                 </ul>
             </section>
             <section class="second-floor">
-                <h3 class="stairs-tit">服务说明</h3>
+                <h3 class="service-tit">服务说明</h3>
                 <ul class="service-note">
                     <li class="service-line return-policy">
                         <span>七天无理由退货</span>
@@ -94,21 +97,21 @@
             <section class="second-floor">
                 <h3 class="stairs-tit">相关推荐</h3>
                 <ul class="recom-box-wrap container">
+                    {{each recmd}}
                     <li class="recom-box">
                         <div class="recom-img-wrap">
-                            <img src="https://resource.smartisan.com/resource/b07b9765e272f866da6acda4ee107d88.png?x-oss-process=image/resize,w_567/format,webp"
-                                alt="">
+                            <img src={{$value.shop_info.ali_image}} alt="">
                         </div>
                         <article>
-                            <h2>坚果 Pro 2S</h2>
-                            <p>双系统，无限屏</p>
+                            <h2>{{$value.shop_info.sku_mobile_title}}</h2>
+                            <p>{{$value.shop_info.sku_mobile_sub_title}}</p>
                             <div class="product-price">
                                     <span class="money-category">￥</span>
-                                    <span class="money-num">199.00</span>
-                                    <span class="money-num-origin">199.00</span>
+                                    <span class="money-num">{{$value.price}}.00</span>
                             </div>
                         </article>
                     </li>
+                    {{/each}}
                 </ul>
             </section>
         </div>

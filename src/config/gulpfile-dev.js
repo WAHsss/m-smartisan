@@ -29,7 +29,7 @@ function gulpServer(){
                     }
                 }),
                 proxy('/single',{
-                    target:'https://shopapi.smartisan.com/product/spus',
+                    target:'https://shopapi.smartisan.com/product',
                     changeOrigin : true,
                     pathRewrite : {
                         '^/single' : ''

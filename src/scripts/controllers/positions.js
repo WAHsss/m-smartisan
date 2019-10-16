@@ -1,6 +1,6 @@
 const positionView = require('../views/position.art');
 const positionListView = require('../views/position-list.art');
-const positionSwiperView = require('../views/position-swiper.art');
+const positionSwiperView = require('../views/component/swiper.art');
 const PositionModel = require('../models/position');
 const searchBarView = require('../views/search-bar.art');
 import BScroll from 'better-scroll';

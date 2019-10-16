@@ -1,7 +1,11 @@
+#root{
+    background: url(../../assets/images/ajax-loader.gif) no-repeat center;
+}
 .detail-container{
     display: flex;
     height: 100%;
     flex-direction: column;
+    position: relative;
     //楼梯
     .stairs-list{
         font-size: .16rem;  
@@ -55,11 +59,7 @@
                 justify-content: center;
             }
         }
-        .second-floor{
-            box-shadow: 0 .05rem .13rem rgba(0,0,0,.1);
-            margin-bottom: .1rem;
-            background: #fff;
-        }
+
         .tit-box{
             padding: .18rem .20rem;
             @include border(0 0 1px 0 ,#ccc,solid)
@@ -161,9 +161,7 @@
                 width: 100%;
                 li{
                     width: 100%;
-                    height: 0;
-                    font-size: 0;
-                    padding-bottom: 59.10%;
+
                 }
                 img{
                     width: 100%;
@@ -233,50 +231,16 @@
         .container{
             padding: .21rem .14rem 0;
         }
-        .recom-box-wrap{
-            display: flex;
-            flex-flow: row wrap;
-            justify-content: space-between;
-            .recom-box{
-                flex-basis: 45%;
-                .recom-img-wrap{
-                    @include border(1px ,#ccc,solid,.05rem);
-                    width: 100%;
-                    height: 0;
-                    font-size: 0;
-                    padding-bottom: 100%;
-                    img{
-                        width: 100%;
-                    }
-                }
-                article{
-                    padding: .09rem .14rem .21rem; 
-                    font-size: .12rem;
-                    h2{
-                        color: #333;
-                        font-weight: 700;
-                        font-size: .14rem;
-                    }
-                    p{
-                        color: #7f7f7f;
-                        font-size: .12rem;
-                        margin-top: .07rem;
-                    }
-                    .product-price{
-                        padding: 0;
-                       
-                    }
-                }
-            }
-        }
-        .stairs-tit{
+        
+
+        .service-tit{
             padding:0 .14rem;
             height: 40px;
             line-height: 40px;
             color: #666;
             font-size: .18rem;
             font-weight: 700;
-            @include border(0 0 1px 0 , #ccc)
+            @include border(0 0 1px 0 , #ccc);
         }
     }
     .detail-footer{

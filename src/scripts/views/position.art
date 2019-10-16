@@ -12,8 +12,8 @@
             </h2>
         </section>
         <div class="swiper-container">
-            <div class="swiper-wrapper">
-            </div>
+            <ul class="swiper-wrapper">
+            </ul>
             <div class="swiper-pagination"></div>
         </div>
 
