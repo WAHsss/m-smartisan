@@ -10,7 +10,7 @@ class ShopView{
            let data = await shopModel.get(path[1]);
             this.data = data.data;
         }
-        
+        $('footer li[data-to=category]').addClass('active').siblings().removeClass('active');
         let shopViewHtml = shopView({
             list : this.data.list
         });

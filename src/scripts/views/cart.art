@@ -1,1 +1,48 @@
-<div>购物车</div>
+<div class="cart-cont">
+    <section class="back-bar">
+        <h1 class="spu-tit">商品列表</h1>
+        <aside class="edit">编辑</aside>
+    </section>
+    <section class="coupon-fluid">
+        <div class="coupon-container">
+            <i class="coupon-icon"></i>
+            <h2 class="coupon-tit">点击领取优惠券</h2>
+            <i class="arrow-right"></i>
+        </div>
+    </section>
+    <div class="cart-scroll-wrap">
+        <div class="cart-scroll-container">
+            <div class="white-base"></div>
+            <div class="discount-info-wrap">
+                <i class="discount-icon">减</i>
+                <div class="discount-info">
+                    已享满<span> 149 </span>减<span> 30 </span>元；满<span> 299 </span>减<span> 90 </span>元，还差<span> 150.00
+                    </span>元
+                    <a href="javascript:;">&nbsp;继续凑单&gt;</a>
+                </div>
+            </div>
+            <ul class="cart-list">
+
+            </ul>
+        </div>
+    </div>
+    <div class="settlement-wrap">
+        <div class="selected-all-wrap">
+            <span class="selected-box" id="select-all"></span>
+        </div>
+        <p>已选 <span class="select-num"> 1 </span> 种</p>
+        <div class="right-item">
+            <div class="sum-money-box">
+                <div class="product-price">
+                    <span class="sum-tit">合计:</span>
+                    <span class="money-category">￥</span>
+                    <span class="money-num">129.00</span>
+                </div>
+                <p>应付的金额不含运费</p>
+            </div>
+            <div class="btn-container">
+                现在结算
+            </div>
+        </div>
+    </div>
+</div>

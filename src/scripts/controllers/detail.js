@@ -1,26 +1,36 @@
 import detailView from '../views/detail.art';
 import swiperView from '../views/component/swiper.art';
+import recmdView from '../views/component/recmd.art';
 import '../../styles/modules/cover-detail.scss';
 import BScroll from 'better-scroll';
 import store from 'store';
 import Model from '../models/detail';
-class DetailView {
+import Callback from '../tools/callback';
+
+class Detail extends Callback{
     async render() {
-        let productCurr = store.get('productCurr');
-        let productBefore = store.get('productBefore');
-        let isSame = productCurr === productBefore;
-        store.set('productBefore', productCurr);
-        if (!productBefore && !productCurr) {
-            location.href = 'index.html';
-        }
         this.defaultSku = 0;
         this.selectedList = [];
         this.stairs = 0;
         this.bScroll = null;
         this.stairsEle = null;
+        this.timeLock = null;
+        this.cartInfo = null;
+
+        let productCurr = store.get('productCurr');
+        location.hash = productCurr;
+        let productBefore = store.get('productBefore');
+        //判断两次请求的数据是否为同一个
+        let isSame = productCurr === productBefore;
+        store.set('productBefore', productCurr);
+        //如果用户误进入这个页面跳转到首页
+        if (!productBefore && !productCurr) {
+            location.href = 'index.html';
+        }
         //获取当前商品的信息
         if (!isSame || !(this.spus = store.get('spus'))) {
             let data = await Model.get(productCurr);
+            console.log(data);
             this.spus = data.data.list[0];
             store.set("spus", this.spus);
         }
@@ -55,20 +65,23 @@ class DetailView {
         //在skus中找到对应spu默认id的的对象
         this.defaultSku = this.seachSkusDefault(this.defaultSkuNo);
         this.promotionInfo = this.seachPromInfo(this.defaultSkuNo);
-
+        this.attr = this.defaultSku ? Object.values(this.defaultSku.attr_info):[{spec_name: '一个',value:'物品'}]
         console.log(this.defaultSku);
         console.log(this.promotionInfo);
         console.log(this.recmd);
         let detailViewHtml = detailView({
             data: this.defaultSku,
             promotion: this.promotionInfo,
-            attr: Object.values(this.defaultSku.attr_info),
+            attr: this.attr,
             recmd: this.recmd
         });
-
+        let recmdViewHtml = recmdView({
+            recmd: this.recmd
+        });
         $('#root').html(detailViewHtml).css({
             background: 'none'
         });
+        $(recmdViewHtml).appendTo('.detail-scroll-wrap');
         let swiperViewHtml = swiperView({
             banner: this.defaultSku.shop_info.ali_images
         });
@@ -102,8 +115,12 @@ class DetailView {
         for (let i = 0; i < this.stairsEle.length; i++) {
             this.offsetArr.push(- parseInt(this.stairsEle.eq(i).offset().top) - 105);
         }
+        this.$cartNum = $('.cart-num');
+        this.initCallback();
+        this.setNum();
         this.bindEvent();
     }
+
     bindEvent() {
         let $stairs = $('.stairs-item');
         $stairs.on('tap', (e) => {
@@ -125,6 +142,59 @@ class DetailView {
         $('.back-bar aside').on('tap', () => {
             history.back();
         })
+        $('.recom-box').on('tap', function () {
+            let num = $(this).data('spu') + '';
+            store.set('productCurr', num.substring(0, 7));
+            location.reload();
+        })
+        $('.add-cart').on('tap', this.addCart.bind(this))
+    }
+
+    addCart() {
+        let id = this.defaultSku.id;
+        let $successInfo = $(".success-info");
+        let that = this;
+        let hasAdd = this.cartData.data.some((ele,index)=>{
+            if(ele.id === id){
+                let temp = that.cartData.data;
+                temp[index].count ++ ;
+                that.cartData.data = temp;
+                return true;
+            }
+            return false;
+        })
+        if (!hasAdd) {
+            this.cartInfo = {
+                id : id,
+                tit : $('.tit-header').text(),
+                subtit: $('.sub-tit').text(),
+                price :{
+                    cate : $('#curr-cate').text(),
+                    num : $('#curr-num').text()
+                },
+                attr : this.attr,
+                img : this.defaultSku.shop_info.ali_image,
+                count : 1
+            }
+            let temp = this.cartData.data;
+            temp.push(this.cartInfo);
+            this.cartData.data = temp;
+        }
+        console.log(this.cartData.data);
+        $successInfo.css({
+            display: 'block',
+            opacity: 1
+        });
+        clearTimeout(this.timeLock);
+        this.timeLock = setTimeout(() => {
+            $successInfo.animate({
+                opacity: 0
+            }, 400, "ease-out", () => {
+                $successInfo.css('display', 'none');
+            })
+        }, 1000);
+
+
     }
     //找到默认显示的商品
     seachSkusDefault(index) {
@@ -160,4 +230,6 @@ class DetailView {
         return discountInfoArr;
     }
 }
-export default new DetailView().render();
+let detail = new Detail();
+detail.render();
+export default detail;

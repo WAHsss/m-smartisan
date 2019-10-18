@@ -1,6 +1,6 @@
 <section class="back-bar">
     <h1 class="spu-tit">商品列表</h1>
-    <aside>返回</aside>
+    <aside class="back">返回</aside>
 </section>
 <section class="shop-scroll-cont">
     <ul class="shop-list-wrap">

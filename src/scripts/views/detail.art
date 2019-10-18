@@ -1,7 +1,7 @@
 <div class="detail-container">
     <header class="back-bar">
         <h1 class="spu-tit">{{data.spu.name}}</h1>
-        <aside>返回</aside>
+        <aside class="back">返回</aside>
     </header>
     <ul class="stairs-list">
         <li class="stairs-item active">商品</li>
@@ -25,13 +25,13 @@
                     <p class="sub-tit">{{data.shop_info.spu_mobile_sub_title}}</p>
                     <div class="price-wrap">
                         <div class="product-price">
-                            <span class="money-category">￥</span>
+                            <span class="money-category" id="curr-cate">￥</span>
                             {{if promotion[0]}}
-                                <span class="money-num">{{promotion[0].discount_price}}.00</span>
-                                <del class="money-origin-num"> ￥ {{data.price}}.00</del>
+                            <span class="money-num" id="curr-num">{{promotion[0].discount_price}}.00</span>
+                            <del class="money-origin-num"> ￥ {{data.price}}.00</del>
                             {{else}}
-                                <span class="money-num">{{data.price}}.00</span>
-                                <del class="money-origin-num"></del>
+                            <span class="money-num" id="curr-num">{{data.price}}.00</span>
+                            <del class="money-origin-num" ></del>
                             {{/if}}
                         </div>
                         <div class="postage-price">满 {{data.shop_info.postage_info.fee_amount}} 元包邮</div>
@@ -40,10 +40,10 @@
                 <section class="activities-wrap">
                     <h5 class="activities-tit">优惠信息</h5>
                     {{each promotion}}
-                        <div class="activities-box">
-                            <span class="activities-type">{{$value.tag}}</span>
-                            <span class="activities-words">{{$value.title}}</span>
-                        </div>
+                    <div class="activities-box">
+                        <span class="activities-type">{{$value.tag}}</span>
+                        <span class="activities-words">{{$value.title}}</span>
+                    </div>
                     {{/each}}
                 </section>
             </section>
@@ -52,7 +52,8 @@
                 <h6 class="selected-tit">已选版本</h6>
                 <article class="selected-cont">
                     {{each attr}}
-                        <p><span class="selected-attr">{{$value.spec_name}}： </span> <span class="selected-value">{{$value.value}}</span></p>
+                    <p><span class="selected-attr">{{$value.spec_name}}： </span> <span
+                            class="selected-value">{{$value.value}}</span></p>
                     {{/each}}
                 </article>
             </section>
@@ -61,9 +62,9 @@
                 <ul>
                     {{set temp = data.shop_info.tpl_content.base}}
                     {{each temp.images.ali_mobile.url}}
-                        <li>
-                            <img src={{$value}} alt="">
-                        </li>
+                    <li>
+                        <img src={{$value}} alt="">
+                    </li>
                     {{/each}}
                 </ul>
             </section>
@@ -71,10 +72,10 @@
                 <h3 class="stairs-tit">技术参数</h3>
                 <ul class="specs-main">
                     {{each temp.attributes[0].list}}
-                        <li class="tec-box">
-                            <h6>{{$value.name}}</h6>
-                            <span>{{$value.value}}</span>
-                        </li>
+                    <li class="tec-box">
+                        <h6>{{$value.name}}</h6>
+                        <span>{{$value.value}}</span>
+                    </li>
                     {{/each}}
                 </ul>
             </section>
@@ -94,32 +95,15 @@
                     </li>
                 </ul>
             </section>
-            <section class="second-floor">
-                <h3 class="stairs-tit">相关推荐</h3>
-                <ul class="recom-box-wrap container">
-                    {{each recmd}}
-                    <li class="recom-box">
-                        <div class="recom-img-wrap">
-                            <img src={{$value.shop_info.ali_image}} alt="">
-                        </div>
-                        <article>
-                            <h2>{{$value.shop_info.sku_mobile_title}}</h2>
-                            <p>{{$value.shop_info.sku_mobile_sub_title}}</p>
-                            <div class="product-price">
-                                    <span class="money-category">￥</span>
-                                    <span class="money-num">{{$value.price}}.00</span>
-                            </div>
-                        </article>
-                    </li>
-                    {{/each}}
-                </ul>
-            </section>
         </div>
     </main>
     <footer class="detail-footer">
         <ul class="footer-container">
             <li class="footer-item">
-                <figure class="img-wrap"></figure>
+                <figure class="img-wrap" id="cart">
+                    <sup class="cart-num">0</sup>
+                </figure>
+
             </li>
             <li class="footer-item">
                 <div class="buy-now">现在购买</div>
@@ -129,4 +113,8 @@
             </li>
         </ul>
     </footer>
+
+</div>
+<div class="success-info">
+    加入购物车成功
 </div>

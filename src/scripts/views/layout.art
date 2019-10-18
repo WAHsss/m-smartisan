@@ -12,8 +12,9 @@
             <li data-to="category"><span class="icon-category"></span>
                 <h5>分类</h5>
             </li>
-            <li data-to="cart"><span class="icon-cart"></span>
-                <h5>购物车</h5>
+            <li data-to="cart">
+                <span class="icon-cart"></span>
+                <h5>购物车<sup class="cart-num">0</sup></h5>
             </li>
             <li data-to="profile"><span class="icon-profile"></span>
                 <h5>个人中心</h5>
