@@ -9,6 +9,7 @@ const dirPath = "../../dev/";
 function gulpServer(){
     return connect.server({
         name : "mobileApp",
+        host: '10.9.49.243',
         root:`${dirPath}`,
         port:"8080",
         livereload : true,

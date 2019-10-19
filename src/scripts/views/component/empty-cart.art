@@ -1,0 +1,13 @@
+<div class="empty-cont">
+    <section class="back-bar">
+        <h1 class="spu-tit">购物车</h1>
+    </section>
+    <div class="empty-inner">
+        <section>
+            <div class="empty-img-container"></div>
+            <h3>购物车暂无商品</h3>
+            <p>添加到购物车的商品将会显示到这里</p>
+            <div class="now-buy">现在选购</div>
+        </section>
+    </div>
+</div>

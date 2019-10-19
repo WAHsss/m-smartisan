@@ -1,5 +1,5 @@
 {{each list}}
-<li class="product-list-item">
+<li class="product-list-item" data-spu={{$value.spuId}}>
     <figure class="product-img-cover">
         <img src={{$value.images}}
             alt="">

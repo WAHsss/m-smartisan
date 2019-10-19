@@ -44,7 +44,7 @@ class Callback {
         this.$cartNum.text(this.sum);
         this.selectSum = this.sum;
         this.selectSumMoney = this.sumMoney;
-        console.log(this.sum,this.sumMoney);
+        // console.log(this.sum,this.sumMoney);
     }
     saveData() {
         store.set('cartList', this.cartData.data);

@@ -41,10 +41,11 @@ class Category {
         this.$scroll_cont.html(categorySecondViewHtml);
         this.bScroll.refresh();
         $('.third-item , .banner-container').on('tap',function(){
+            console.log(this);
             let spu = $(this).data('spu');
             if(Number(spu)){
-                location.href = 'detail.html';
                 store.set('productCurr',spu);
+                location.href = 'detail.html';
             }else{
                 location.hash = 'shop/'+spu;
             }

@@ -3,6 +3,7 @@ const positionListView = require('../views/position-list.art');
 const positionSwiperView = require('../views/component/swiper.art');
 const PositionModel = require('../models/position');
 const searchBarView = require('../views/search-bar.art');
+import store from 'store';
 import BScroll from 'better-scroll';
 class Position {
     constructor() {
@@ -13,6 +14,8 @@ class Position {
     }
     renderer(result) {
         this.list = [...this.list, ...result.data.skuInfo];
+        console.log(this.list);
+        
         let positionListHtml = positionListView({
             list: this.list
         })
@@ -33,8 +36,20 @@ class Position {
         let $back = $('.back-to-top');
         //加载swiper的数据
         let homeRes = await PositionModel.getHome();
+        let reg = /\/(\d+\S+)$/;
+        let newHomeRes = homeRes.data[0].list.map(ele =>{
+            let res = reg.exec(ele.url)
+            let temp = res[1];
+            if(~~temp){
+                ele.url = temp.slice(0,7);
+            }else{
+                
+                ele.url = temp.replace(/type=/,'');
+            }
+            return ele;
+        });
         let positionSwiperViewHtml = positionSwiperView({
-            banner: homeRes.data[0].list
+            banner: newHomeRes
         });
         $('.swiper-wrapper').html(positionSwiperViewHtml);
         //获取第一页数据
@@ -116,6 +131,25 @@ class Position {
             bScroll.scrollTo(0, 0, 500);
             $back.removeClass('active');
             that.fixdEle.remove();
+        })
+        this.bindEvent();
+    }
+    bindEvent(){
+        $('.product-list-container').on('tap','li[data-spu]',function(){
+            console.log(this);
+            let id = $(this).data('spu');
+            store.set('productCurr',id);
+            location.href = './detail.html';
+        });
+        $('.swiper-container').on('tap','.swiper-slide',function(){
+            console.log(this)
+            let spu = $(this).data('spu');
+            if(Number(spu)){
+                store.set('productCurr',spu);
+                location.href = 'detail.html';
+            }else{
+                location.hash = 'shop/'+spu;
+            }
         })
     }
 }

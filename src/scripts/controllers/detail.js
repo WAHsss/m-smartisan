@@ -138,27 +138,36 @@ class Detail extends Callback{
                 }
             }
             $stairs.eq(index).addClass("active").siblings().removeClass('active');
-        })
+        });
         $('.back-bar aside').on('tap', () => {
             history.back();
-        })
+        });
         $('.recom-box').on('tap', function () {
             let num = $(this).data('spu') + '';
             store.set('productCurr', num.substring(0, 7));
             location.reload();
         })
-        $('.add-cart').on('tap', this.addCart.bind(this))
+        $('.add-cart').on('tap', this.addCart.bind(this));
+        $('#cart').on('tap',()=>{
+            location.href = './index.html#cart';
+        });
     }
 
     addCart() {
         let id = this.defaultSku.id;
         let $successInfo = $(".success-info");
         let that = this;
+        let aletInfo = "成功加入购物车";
         let hasAdd = this.cartData.data.some((ele,index)=>{
             if(ele.id === id){
                 let temp = that.cartData.data;
-                temp[index].count ++ ;
-                that.cartData.data = temp;
+                if(temp[index].count < 5){
+                   temp[index].count ++ ; 
+                   that.cartData.data = temp;
+                   aletInfo = '成功加入购物车';
+                }else{
+                    aletInfo = `${temp[index].tit}已经达到了最大上限`
+                }
                 return true;
             }
             return false;
@@ -184,7 +193,7 @@ class Detail extends Callback{
         $successInfo.css({
             display: 'block',
             opacity: 1
-        });
+        }).text(aletInfo);
         clearTimeout(this.timeLock);
         this.timeLock = setTimeout(() => {
             $successInfo.animate({
@@ -193,8 +202,6 @@ class Detail extends Callback{
                 $successInfo.css('display', 'none');
             })
         }, 1000);
-
-
     }
     //找到默认显示的商品
     seachSkusDefault(index) {

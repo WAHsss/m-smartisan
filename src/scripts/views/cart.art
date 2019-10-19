@@ -1,6 +1,6 @@
 <div class="cart-cont">
     <section class="back-bar">
-        <h1 class="spu-tit">商品列表</h1>
+        <h1 class="spu-tit">购物车</h1>
         <aside class="edit">编辑</aside>
     </section>
     <section class="coupon-fluid">
