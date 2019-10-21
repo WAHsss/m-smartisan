@@ -85,24 +85,27 @@ class Cart extends callBack {
         let $target = $(target);
         let temp = this.cartData.data;
         if($target.text().trim() === "删除所选"){
-            let deleteArr = [];
-            this.$listSelect.forEach((item)=>{
-                let $item = $(item);
-                if(!$item.hasClass('dis')){
-                    let $parent = $item.parents('.cart-item');
-                    deleteArr.push(~~$parent.data('spu'));
-                    $parent.remove();
+            let isDelete = confirm('确定要删除所选商品么？');
+            if(isDelete){
+                let deleteArr = [];
+                this.$listSelect.forEach((item)=>{
+                    let $item = $(item);
+                    if(!$item.hasClass('dis')){
+                        let $parent = $item.parents('.cart-item');
+                        deleteArr.push(~~$parent.data('spu'));
+                        $parent.remove();
+                    }
+                });
+                for(let i = temp.length - 1 ; i >= 0 ; i--){
+                    console.log(deleteArr.indexOf(temp[i].id))
+                    if(deleteArr.indexOf(temp[i].id)>=0){
+                        temp.splice(i,1);
+                    }
                 }
-            });
-            for(let i = temp.length - 1 ; i >= 0 ; i--){
-                console.log(deleteArr.indexOf(temp[i].id))
-                if(deleteArr.indexOf(temp[i].id)>=0){
-                    temp.splice(i,1);
+                this.cartData.data = temp;
+                if(this.cartData.data.length === 0){
+                    this.emptyRender();
                 }
-            }
-            this.cartData.data = temp;
-            if(this.cartData.data.length === 0){
-                this.emptyRender();
             }
         }else{
             return false;

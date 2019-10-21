@@ -43,8 +43,8 @@ class Category {
         $('.third-item , .banner-container').on('tap',function(){
             console.log(this);
             let spu = $(this).data('spu');
-            if(Number(spu)){
-                store.set('productCurr',spu);
+            if(~~spu){
+                store.set('productCurr',(spu+'').slice(0,7));
                 location.href = 'detail.html';
             }else{
                 location.hash = 'shop/'+spu;

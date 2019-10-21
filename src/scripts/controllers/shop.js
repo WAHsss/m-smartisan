@@ -1,7 +1,7 @@
 import shopView from '../views/shop.art';
 import shopModel from '../models/shop';
 import BScroll from 'better-scroll';
-
+import store from 'store';
 class ShopView{
     async render(){
         let reg = /\/(\d+)\?(\w+)$/;
@@ -26,6 +26,11 @@ class ShopView{
     bindEvent(){
         $('.back-bar aside').on('tap',()=>{
             history.back();
+        });
+        $('.shop-list-item').on('tap',function(){
+            let id = ($(this).data('id')+'').slice(0,7);
+            store.set('productCurr',id);
+            location.href = 'detail.html';
         })
     }
 }
