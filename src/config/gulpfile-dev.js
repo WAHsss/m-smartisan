@@ -9,6 +9,7 @@ const dirPath = "../../dev/";
 function gulpServer(){
     return connect.server({
         name : "mobileApp",
+        host: '10.9.49.243',
         root:`${dirPath}`,
         port:"8080",
         livereload : true,
@@ -19,6 +20,20 @@ function gulpServer(){
                     changeOrigin : true,
                     pathRewrite:{
                         '^/api':''
+                    }
+                }),
+                proxy('/shopapi',{
+                    target:'https://shopapi.smartisan.com/v1/search/goods-list',
+                    changeOrigin : true,
+                    pathRewrite:{
+                        '^/shopapi':''
+                    }
+                }),
+                proxy('/single',{
+                    target:'https://shopapi.smartisan.com/product',
+                    changeOrigin : true,
+                    pathRewrite : {
+                        '^/single' : ''
                     }
                 })
             ]
@@ -32,19 +47,22 @@ function copyHTML(){
 }
 
 function copySCSS(){
-    return src(["../styles/**/*.scss","!../styles/yo/**/*.scss"])
+    return src(["../styles/*.scss",])
             .pipe(sass().on('error', sass.logError))
             .pipe(dest(`${dirPath}styles/`))
             .pipe(connect.reload())
 }
 function packJS(){
-    return src(["../scripts/app.js"])
+    return src(["../scripts/*.js"])
     .pipe(webpack({
         mode:"development",//production开发模式
-        entry: "../scripts/app.js",
+        entry: {
+            app: "../scripts/app.js",
+            'app-detail' : "../scripts/app-detail.js"
+        },
         output:{
             path : path.resolve(__dirname,`${dirPath}`),//文件路径自动解析拼接
-            filename : 'app.js'
+            filename : '[name].js'
         },
         module:{
             rules:[
@@ -54,6 +72,13 @@ function packJS(){
                 },{
                     test : /\.art$/,
                     loader : 'art-template-loader'
+                },{
+                    test:/\.scss$/,
+                    use:[
+                        'style-loader',
+                        'css-loader',
+                        'sass-loader'
+                    ]
                 }
             ]
         }

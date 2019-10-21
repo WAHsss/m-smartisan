@@ -1,3 +1,8 @@
+
+.scroll-container-warp{
+    height: 100%;
+    overflow: hidden;
+}
 .search-bar-wrap{
     background-color: #fff;
     height: .52rem;
@@ -22,15 +27,16 @@
             margin-left: .09rem;
         }
     }
+    &.shadow{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        box-shadow: 0 1px 0 hsla(0,0%,40%,.1);
+        z-index: 999;
+    }
 }
-.shadow{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    box-shadow: 0 1px 0 hsla(0,0%,40%,.1);
-    z-index: 999;
-}
+
 .scroll-container{
     .head,.foot{
         height: .4rem;
@@ -69,20 +75,6 @@
         }
     }
 
-    .my-bullet {
-        width: .08rem;
-        height: .08rem;
-        background-color: rgba(0, 0, 0, .8);
-        @include border(1, rgba(0, 0, 0, .08), solid, 50%);
-        display: inline-block;
-        margin: 0 4px;
-        opacity: .2;
-    }
-
-    .my-bullet-active {
-        background-color: #fff;
-        opacity: 1;
-    }
 }
 
 .home-box{
@@ -141,23 +133,7 @@
                     text-overflow: ellipsis;
                     overflow: hidden;
                     color: rgba(0, 0, 0, .7);
-                    font-size: .13rem;
-                }
-            }
-
-            .product-price {
-                padding: 0 6px;
-                color: #d44d44;
-                font-weight: 700;
-                .money-categroy {
-                    font-size: .12rem;
-                    margin-right: .03rem;
-                    line-height: .14rem;
-                }
-
-                .money-num {
                     font-size: .14rem;
-                    line-height: .14rem;
                 }
             }
         }

@@ -1,5 +1,11 @@
 @import "./yo/usage/core/reset.scss";
 
-@import "./modules/index";
-@import "./modules/common";
-@import "./modules/position";
+@import "./modules/index.scss";
+@import "./modules/common.scss";
+@import "./modules/position.scss";
+@import "./modules/category.scss";
+@import "./modules/shop.scss";
+@import "./modules/cart.scss";
+@import "./modules/empty-cart.scss";
+@import "./modules/profile.scss";
+

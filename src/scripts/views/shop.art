@@ -1,0 +1,30 @@
+<section class="back-bar">
+    <h1 class="spu-tit">商品列表</h1>
+    <aside class="back">返回</aside>
+</section>
+<section class="shop-scroll-cont">
+    <ul class="shop-list-wrap">
+        {{each list}}
+        <li class="shop-list-item" data-id={{$value.spuInfo.spuId}}>
+            <figure class="product-img-wrap">
+                <img src={{$value.spuInfo.images}} alt="">
+            </figure>
+            <section class="product-details">
+                <h2 class="product-tit">{{$value.spuInfo.spuTitle}}</h2>
+                <h5 class="product-subtit">{{$value.spuInfo.spuSubTitle}}</h5>
+                <ul class="product-color-list">
+                    {{each $value.skuList}}
+                    <li class="color-list-item">
+                        <img src={{$value.skuColor}} alt="">
+                    </li>
+                    {{/each}}
+                </ul>
+                <div class="product-price">
+                    <span class="money-category">￥</span>
+                    <span class="price-num">{{$value.spuInfo.price}}.00</span>
+                </div>
+            </section>
+        </li>
+        {{/each}}
+    </ul>
+</section>

@@ -1,1 +1,62 @@
-<div>个人信息</div>
+<div class="page-cont">
+    <section class="back-bar">
+        <h1 class="spu-tit">个人中心</h1>
+    </section>
+    <div class="profile-scroll-cont">
+        <div>
+            <div class="header-cont card">
+                <div class="common-item profile-info">
+                    <div class="avatar"><img src="https://static.smartisanos.cn/account/asset/img/default-user-avatar.png" alt=""></div>
+                    <span>+86 150****2095 </span>
+                </div>
+                <ul class="menu-list">
+                    <li class="all-order">
+                        <a href="javascript:void(0)">全部订单</a>
+                    </li>
+                    <li class="wait-pay">
+                        <a href="javascript:void(0)">待付款</a>
+                    </li>
+                    <li class="wait-get">
+                        <a href="javascript:void(0)">待收货</a>
+                    </li>
+                    <li class="sale-after">
+                        <a href="javascript:void(0)">售后</a>
+                    </li>
+                </ul>
+            </div>
+            <ul class="common-list card">
+                <li class="profile-list-item common-item">
+                    <a href="javascript:;">地址管理</a>
+                </li>
+                <li class="profile-list-item common-item">
+                    <a href="javascript:;">我的优惠券</a>
+                </li>
+                <li class="profile-list-item common-item">
+                    <a href="javascript:;">优先购买卡</a>
+                </li>
+                <li class="profile-list-item common-item">
+                    <a href="javascript:;">提货兑换卡</a>
+                </li>
+            </ul>
+            <ul class="common-list card">
+                <li class="profile-list-item common-item">
+                    <a href="javascript:;">以旧换新</a>
+                </li>
+                <li class="profile-list-item common-item">
+                    <a href="javascript:;">常见问题</a>
+                </li>
+                <li class="profile-list-item common-item">
+                    <a href="javascript:;">服务支持</a>
+                </li>
+            </ul>
+            <ul class="common-list card end">
+                <li class="profile-list-item common-item">
+                    <a href="javascript:;">意外碎屏保修服务</a>
+                </li>
+                <li class="profile-list-item common-item">
+                    <a href="javascript:;">延长保修服务</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

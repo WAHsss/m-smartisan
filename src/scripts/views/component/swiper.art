@@ -1,0 +1,11 @@
+{{each banner}}
+    {{if $value.image}}
+        <li class="swiper-slide" data-spu={{$value.url}}>
+            <img src={{$value.image}} alt="">
+        </li>
+    {{else if $value}}
+        <li class="swiper-slide">
+            <img src={{$value}} alt="">
+        </li>
+    {{/if}}
+{{/each}}

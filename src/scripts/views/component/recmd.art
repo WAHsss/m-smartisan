@@ -1,0 +1,24 @@
+<section class="second-floor">
+    <h3 class="stairs-tit">相关推荐</h3>
+    <ul class="recom-box-wrap container">
+        {{if(recmd.length !== 0)}}
+            {{each recmd}}
+            <li class="recom-box" data-spu={{$value.id}}>
+                <div class="recom-img-wrap">
+                    <img src={{$value.shop_info.ali_image}} alt="">
+                </div>
+                <article>
+                    <h2>{{$value.shop_info.sku_mobile_title}}</h2>
+                    <p>{{$value.shop_info.sku_mobile_sub_title}}</p>
+                    <div class="product-price">
+                            <span class="money-category">￥</span>
+                            <span class="money-num">{{$value.price}}.00</span>
+                    </div>
+                </article>
+            </li>
+            {{/each}}
+        {{else}}
+            <h4>暂无推荐</h4>
+        {{/if}}
+    </ul>
+</section>

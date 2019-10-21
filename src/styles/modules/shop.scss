@@ -1,0 +1,69 @@
+.shop-scroll-cont{
+    height: calc(100% - .5rem);
+    overflow: hidden;
+    background-color: #fff;
+    .shop-list-wrap{
+        display: flex;
+        flex-direction: column;
+        .shop-list-item{
+            width: 100%;
+            padding: 3.4vw;
+            display: flex;
+            align-items: center;
+            @include border(0 0 1px 0 , #ccc);
+            .product-img-wrap{
+                width: 33.57vw;
+                height: 0;
+                font-size: 0;
+                padding-bottom: 33.57vw;
+                margin-right: 8.7vw;
+                img{
+                    width: 100%;
+                }
+            }
+            .product-details{
+                display: flex;
+                flex-direction: column;
+                .product-tit{
+                    font-size: 3.4vm;
+                    color: #333;
+
+                }
+                .product-subtit{
+                    font-size: 2.8vw;
+                    color: #7f7f7f;
+                    margin-top: 1.2vw;
+                }
+                .product-color-list{
+                    margin-top: 2.4vw;
+                    display: flex;
+                    .color-list-item{
+                        width: 2.4vw;
+                        height: 2.4vw;
+                        margin-right: 2vw;
+                        @include border(1,#ccc,solid,100%);
+                        position: relative;
+                        background-color: rgba(#000000,.01);
+                        img{
+                            width: 60%;
+                            height: 60%;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%,-50%);
+                        }
+                    }
+                }
+                .product-price{
+                    margin-top: 2.4vw;
+                    font-size: 3.4vw;
+                    padding: 0;
+                    .money-category{
+                        font-size: 2.9vw;
+                    }
+                }
+            }
+        }
+        
+    }
+}

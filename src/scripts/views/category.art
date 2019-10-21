@@ -1,0 +1,17 @@
+<div class="category-wrapper">
+    <div class="body-wrap">
+        <section class="left-wrap">
+            <ul class="category-router-list">
+                {{each list}}
+                    <li class="category-router-item" data-id={{$value.classifyId}}>{{$value.classifyName}}</li>
+                {{/each}}
+            </ul>
+        </section>
+        <section class="right-wrap">
+            <div class="sub-page-scroll-wrap">
+
+            </div>
+        </section>
+    </div>
+
+</div>

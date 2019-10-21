@@ -1,0 +1,24 @@
+<section class="sub-page" data-id={{item.classifyId}}>
+    {{if item.banner}}
+    <div class="banner-wrpper">
+        <figure class="banner-container" data-spu={{item.banner[0].url.split('/').pop()}}>
+            <img src={{item.banner[0].image}} alt="">
+        </figure>
+    </div>
+    {{/if}}
+    {{each item.second}}
+    <section class="second-wrap" data-id={{$value.classifyId}}>
+        <h1 class="second-classify-tit">{{$value.classifyName}}</h1>
+        <aside class="third-flex-wrap">
+            {{each $value.third}}
+            <figure class="third-item" data-id={{$value.classifyId}} data-spu={{$value.spuList[1] ? $value.classifyId+'?shop' : $value.spuList[0]}}>
+                <div class="third-img-wrap">
+                    <img src={{$value.image}} alt="">
+                </div>
+                <figcaption class="img-tit">{{$value.classifyName}}</figcaption>
+            </figure>
+            {{/each}}
+        </aside>
+    </section>
+    {{/each}}
+</section>

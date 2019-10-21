@@ -1,5 +1,5 @@
 {{each list}}
-<li class="product-list-item">
+<li class="product-list-item" data-spu={{$value.spuId}}>
     <figure class="product-img-cover">
         <img src={{$value.images}}
             alt="">
@@ -8,7 +8,7 @@
         <h3>{{$value.skuMobileTitle}}</h3>
     </article>
     <article class="product-price">
-        <span class="money-categroy">￥</span>
+        <span class="money-category">￥</span>
         <span class="price-num">{{$value.originalPrice}}</span>
     </article>
 </li>
