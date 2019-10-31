@@ -45,10 +45,10 @@
     font-size: .2rem;
     justify-content: space-between;
     span {
-        margin-right: 40%;
+        display: block;
+        width: 100%;
+        text-align: center;
     }
-
-
 }
 
 .avatar {

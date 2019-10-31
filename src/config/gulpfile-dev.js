@@ -10,7 +10,7 @@ function gulpServer(){
     return connect.server({
         name : "mobileApp",
         root:`${dirPath}`,
-        port:"8080",//端口号配置
+        port:"8080",
         livereload : true,
         middleware : ()=>{
             return [

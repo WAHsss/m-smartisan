@@ -35,13 +35,13 @@ class Category {
     }
     renderer(){
         this.$router.eq(this.currIndex).addClass('active').siblings().removeClass('active');
+        //console.log(this.data)
         let categorySecondViewHtml = categorySecondView({
             item: this.data[this.currIndex]
         })
         this.$scroll_cont.html(categorySecondViewHtml);
         this.bScroll.refresh();
         $('.third-item , .banner-container').on('tap',function(){
-            console.log(this);
             let spu = $(this).data('spu');
             if(~~spu){
                 store.set('productCurr',(spu+'').slice(0,7));
@@ -80,7 +80,6 @@ class Category {
     changeCurrIndex(boo){
         let length = this.data.length-1;
         boo ? this.currIndex ++ : this.currIndex --;
-        //console.log(this.currIndex);
         if(this.currIndex > length){
             this.currIndex = length;
             return false;

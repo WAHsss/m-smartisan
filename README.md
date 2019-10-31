@@ -18,7 +18,8 @@ smartisan's m-site
 
 ### 核心技术
 1. 脚手架 gulp
-单页面，多页面，本地储存
+2. 单页面，多页面，本地储存
+3. better-scroll
 #### 页面 
 1. position：100%布局， 吸顶，回到顶部，上拉刷新 
 2. category： 100%布局，楼梯+无缝连接

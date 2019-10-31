@@ -14,7 +14,7 @@ class Position {
     }
     renderer(result) {
         this.list = [...this.list, ...result.data.skuInfo];
-        console.log(this.list);
+        //console.log(this.list);
         
         let positionListHtml = positionListView({
             list: this.list
@@ -136,13 +136,11 @@ class Position {
     }
     bindEvent(){
         $('.product-list-container').on('tap','li[data-spu]',function(){
-            console.log(this);
             let id = $(this).data('spu');
             store.set('productCurr',id);
             location.href = './detail.html';
         });
         $('.swiper-container').on('tap','.swiper-slide',function(){
-            console.log(this)
             let spu = $(this).data('spu');
             if(Number(spu)){
                 store.set('productCurr',spu);
